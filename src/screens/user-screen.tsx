@@ -1,50 +1,39 @@
-import React, {useEffect, useState, useRef} from 'react';
-
+import React from 'react';
 import {
   View,
   StyleSheet,
   Text,
   SafeAreaView,
-  Image,
-  ScrollView,
+  TouchableOpacity,
   Dimensions,
-  Animated,
 } from 'react-native';
-
 import Footer from '../components/common/Theme/footer';
 
-const fvimage1 = require('assets/images/machine_cad_1.jpg');
-const fvimage2 = require('assets/images/machine_cad_2.jpg');
-const fvimage3 = require('assets/images/machine_cad_3.jpg');
-const fvimage4 = require('assets/images/machine_cad_4.jpg');
-const fvimage5 = require('assets/images/machine_cad_5.jpg');
-const fvimage6 = require('assets/images/machine_cad_6.jpg');
-
-const photoimage1_0 = require('assets/photos/IMG_4347.jpg');
-const photoimage1_1 = require('assets/photos/IMG_4348.jpg');
-const photoimage1_2 = require('assets/photos/IMG_4349.jpg');
-const photoimage2 = require('assets/photos/IMG_4656.jpg');
-const photoimage3 = require('assets/photos/IMG_5047.jpg');
-const photoimage4 = require('assets/photos/IMG_5143.jpg');
-const photoimage5_0 = require('assets/photos/IMG_5545.jpg');
-const photoimage5_1 = require('assets/photos/IMG_5546.jpg');
-const photoimage5_2 = require('assets/photos/IMG_5547.jpg');
-
-const design1 = require('assets/designs/design1.jpg');
-const design2 = require('assets/designs/design2.jpg');
-const design3 = require('assets/designs/design3.jpg');
-const design4 = require('assets/designs/design4.jpg');
-const design5 = require('assets/designs/design5.jpg');
-
 const { width } = Dimensions.get('window');
-const { height } = Dimensions.get('window');
 
-const UserScreen = ({navigation, route}: any) => {
+const UserScreen = ({ navigation }: any) => {
+  const handleEditProfile = () => {
+    // Add logic here to navigate to the edit profile screen or handle profile editing
+    navigation.navigate('User-Info')
+    console.log("Edit Profile button pressed");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        
-      </ScrollView>
+      <View style={styles.content}>
+        <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
+          <Text style={styles.buttonText}>個人情報の編集</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
+          <Text style={styles.buttonText}>料金管理</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
+          <Text style={styles.buttonText}>パスワード管理</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
+          <Text style={styles.buttonText}>図面データ管理</Text>
+        </TouchableOpacity>
+      </View>
       <Footer style={styles.footer} navigation={navigation} />
     </SafeAreaView>
   );
@@ -55,15 +44,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#001a00',
   },
-  scrollContent: {
-    flexGrow: 1,
-
+  content: {
+    flex: 1, // Takes up all the space above the footer
+    justifyContent: 'center', // Center content vertically
+    alignItems: 'center', // Center content horizontally
   },
   footer: {
-    position: 'absolute',
-    bottom: 0,
     width: '100%',
     height: 60,
+    backgroundColor: '#ffffff', // Make sure it has a background color
+  },
+  button: {
+    width: width * 2 / 3,
+    height: 50,
+    borderRadius: 30,
+    backgroundColor: '#ffffff',
+    justifyContent: 'center', // Center text vertically
+    alignItems: 'center', // Center text horizontally
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#001a00',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

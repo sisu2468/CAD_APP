@@ -9,6 +9,10 @@ import HomeScreen from 'screens/home-screen';
 import DesignScreen from 'screens/design-screen';
 import PaymentScreen from 'screens/payment-screen';
 import UserScreen from 'screens/user-screen';
+import UserInfo from 'components/screens/user-screen/user-info'
+import UserPayment from 'components/screens/user-screen/user-payment';
+import UserPassword from 'components/screens/user-screen/user-pwd';
+import UserDesign from 'components/screens/user-screen/user-design';
 
 const App = () => {
   return (
@@ -42,6 +46,26 @@ const App = () => {
         <Stack.Screen
           name="User"
           component={UserScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="User-Info"
+          component={UserInfo}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="User-Pwd"
+          component={UserPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="User-Pay"
+          component={UserPayment}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="User-Design"
+          component={UserDesign}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
