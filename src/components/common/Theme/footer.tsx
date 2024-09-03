@@ -13,27 +13,43 @@ const feedback = require('assets/images/feedback.png');
 const paid = require('assets/images/paid.png');
 const design = require('assets/images/design_services_24dp.png');
 
-export default function Footer(navigation){
+const Footer = ({navigation, route}: any) => {
     const handleSignOut = () => {
-        navigation.navigate('Signin', {isSignout: true});
+      navigation.navigate('Signin', {isSignout: true});
     };
-
+    const handleDesign = () => {
+      navigation.navigate('Design');
+    };
+    const handlePaid = () => {
+        navigation.navigate('Payment');
+    };
+    const handleHome = () => {
+        navigation.navigate('Home');
+    };
+    const handleFeedback = () => {
+      navigation.navigate('Feedback')
+    };
+    const handleUser = () => {
+      navigation.navigate('User')
+    };
     return (
-        <View style={styles.footer}>
-            <TouchableOpacity style={styles.newLoanButton} onPress={handleSignOut}>
-              <Image source={design} style={styles.icon} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.newLoanButton} onPress={handleSignOut}>
-              <Image source={paid} style={styles.icon} />
-            </TouchableOpacity>
-            <Image source={Logo} style={styles.logo} />
-            <TouchableOpacity style={styles.newLoanButton}>
-              <Image source={feedback} style={styles.icon} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.newLoanButton}>
-              <Image source={userinfo} style={styles.icon} />
-            </TouchableOpacity>
-        </View>
+      <View style={styles.footer}>
+          <TouchableOpacity style={styles.newLoanButton} onPress={handleDesign}>
+            <Image source={design} style={styles.icon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.newLoanButton} onPress={handlePaid}>
+            <Image source={paid} style={styles.icon} />
+          </TouchableOpacity>
+          <TouchableOpacity  onPress={handleHome}>
+            <Image source={Logo} style={styles.logo}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.newLoanButton} onPress={handleFeedback}>
+            <Image source={feedback} style={styles.icon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.newLoanButton} onPress={handleUser}>
+            <Image source={userinfo} style={styles.icon} />
+          </TouchableOpacity>
+      </View>
     )
 }
 
@@ -78,3 +94,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default Footer;

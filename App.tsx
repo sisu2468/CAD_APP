@@ -7,6 +7,8 @@ import SignInScreen from 'screens/login-screen';
 import SignUpScreen from 'screens/signup-screen';
 import HomeScreen from 'screens/home-screen';
 import DesignScreen from 'screens/design-screen';
+import PaymentScreen from 'screens/payment-screen';
+import UserScreen from 'screens/user-screen';
 
 const App = () => {
   return (
@@ -30,6 +32,16 @@ const App = () => {
         <Stack.Screen
           name="Design"
           component={DesignScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Payment"
+          component={PaymentScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="User"
+          component={UserScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

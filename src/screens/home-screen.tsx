@@ -39,7 +39,7 @@ const design5 = require('assets/designs/design5.jpg');
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({navigation, route}: any) => {
   // fadeAnim will be used as the value for opacity. Initial Value: 0
   const fadeAnim = useRef(new Animated.Value(0)).current;
   let transheight = height * 1 / 3;
@@ -122,7 +122,7 @@ const HomeScreen = ({ navigation }) => {
             <Image source={images[currentImageIndex]} style={styles.fvimges} />
           </Animated.View>
         </View>
-        <View style={styles.content}>
+        <View>
           <Text style={styles.hometext}>Recently Processed Drawings</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <Image source={design1} style={styles.designimage} />
@@ -134,12 +134,12 @@ const HomeScreen = ({ navigation }) => {
         </View>
         <View style={styles.photocontent}>
           <Text style={styles.hometext}>Recently Captured Photos</Text>
-          <View horizontal style={styles.photoimages}>
+          <View style={styles.photoimages}>
             <Image source={photoimage1_0} style={styles.photoimage} />
             <Image source={photoimage1_1} style={styles.photoimage} />
             <Image source={photoimage1_2} style={styles.photoimage} />
           </View>
-          <View horizontal style={styles.photoimages}>
+          <View style={styles.photoimages}>
             <Image source={photoimage5_0} style={styles.photoimage} />
             <Image source={photoimage5_1} style={styles.photoimage} />
             <Image source={photoimage5_2} style={styles.photoimage} />
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   fvimges: {
-    width: Dimensions.get('window').width * 0.8, // Adjust width for horizontal scroll
+    width: Dimensions.get('window').width * 0.7, // Adjust width for horizontal scroll
     height: 250,
     margin: 'auto',
   },
