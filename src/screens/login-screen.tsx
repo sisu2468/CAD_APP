@@ -35,7 +35,7 @@ const SignInScreen = ({navigation, route}: any) => {
     }
   };
 
-  const HandleSignIn = async() => {
+  const HandleSignIn = () => {
     // if (email !== 'test@gmail.com' || password !== 'test123') {
 
     //   Alert.alert(
@@ -44,32 +44,35 @@ const SignInScreen = ({navigation, route}: any) => {
     //   );
     //   return;
     // } else {
-      try {
-        const response = await fetch('http://localhost:8000/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: email,
-            pwd: password,
-          }),
-        });
-      
-        const data = await response.json();
+      // try {
+      //   console.log("///////");
         
-        if (response.ok) {
-          // Successful login
-          Alert.alert('ログイン成功', `ようこそ ${data.name}`);
-          navigation.navigate('Home');
-        } else {
-          // Handle login failure
-          Alert.alert('ログイン失敗', data.message || '無効な認証情報');
-        }
-      } catch (error) {
-        Alert.alert('エラー', '何か問題が発生しました。');
-        console.error(error);
-      }
+      //   const response = await fetch('http://localhost:8000/api/login', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       email: email,
+      //       pwd: password,
+      //     }),
+      //   });
+      
+      //   const data = await response.json();
+        
+      //   if (response.ok) {
+      //     // Successful login
+      //     Alert.alert('ログイン成功', `ようこそ ${data.name}`);
+      //     navigation.navigate('Home');
+      //   } else {
+      //     // Handle login failure
+      //     Alert.alert('ログイン失敗', data.message || '無効な認証情報');
+      //   }
+      // } catch (error) {
+      //   Alert.alert('エラー', '何か問題が発生しました。');
+      //   console.error(error);
+      // }
+      navigation.navigate('Home');
       
     // }
   };

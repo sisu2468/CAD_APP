@@ -27,7 +27,7 @@ const LoginOptions = ({isRemember, setIsRemember}: Props) => {
         ) : (
           <Icon name="checkbox-passive" size={16} color={'#383F41'} />
         )}
-        <Text style={styles.checkboxLabel}>リメンバー・ミー</Text>
+        <Text style={styles.checkboxLabel}>保存</Text>
       </TouchableOpacity>
       <TouchableOpacity>
         <Text style={PageStyles.underlineLink} onPress={handleForgotPassword}>
