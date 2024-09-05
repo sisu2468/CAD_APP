@@ -14,7 +14,7 @@ const LoginOptions = ({isRemember, setIsRemember}: Props) => {
   };
 
   const handleForgotPassword = () => {
-    Alert.alert('', 'しばらくお待ちください。機能を実装する');
+    Alert.alert('', 'Please wait. Implementing the feature.');
   };
 
   return (
@@ -27,11 +27,11 @@ const LoginOptions = ({isRemember, setIsRemember}: Props) => {
         ) : (
           <Icon name="checkbox-passive" size={16} color={'#383F41'} />
         )}
-        <Text style={styles.checkboxLabel}>保存</Text>
+        <Text style={styles.checkboxLabel}>Remember Me</Text>
       </TouchableOpacity>
       <TouchableOpacity>
         <Text style={PageStyles.underlineLink} onPress={handleForgotPassword}>
-          パスワードをお忘れですか？
+          Forgot Password?
         </Text>
       </TouchableOpacity>
     </View>
