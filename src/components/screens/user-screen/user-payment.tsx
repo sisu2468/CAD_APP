@@ -33,33 +33,33 @@ const UserPayment = ({ navigation, route }: any) => {
         <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
           <Image source={previousButton} style={styles.previousButton} />
           <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>料金管理</Text>
+            <Text style={styles.headertext}>Payment Management</Text>
           </View>
         </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Image source={usercost} style={styles.passwordImage}></Image>
         <View style={styles.content}>
-          <Text style={styles.label}>メールアドレス</Text>
+          <Text style={styles.label}>Email Address</Text>
           <TextInput
             style={styles.input}
-            placeholder='メールアドレス'
+            placeholder='Email Address'
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
 
-          <Text style={styles.label}>現在パスワード</Text>
+          <Text style={styles.label}>Current Credit</Text>
           <TextInput
             style={styles.input}
-            placeholder="料金"
+            placeholder="Payment"
             value={cost}
             onChangeText={setCost}
             editable={false}
             selectTextOnFocus={false}
           />
           <TouchableOpacity style={styles.updateButton} onPress={handlepayment}>
-            <Text style={styles.updateButtonText}>クレジット購入</Text>
+            <Text style={styles.updateButtonText}>Buy the Credit</Text>
           </TouchableOpacity>    
         </View>
       </ScrollView>
