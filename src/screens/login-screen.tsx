@@ -40,9 +40,9 @@ const SignInScreen = ({navigation, route}: any) => {
     // if (email !== 'test@gmail.com' || password !== 'test123') {
 
     //   Alert.alert(
-    //     '無効な資格情報。',
-    //     `現状 \n\n メールアドレス: ${email} \n パスワード: ${password}`,
-    //   );
+        //   'Invalid Credentials.',
+        //   `current status \n\n Email: ${email} \n Password: ${password} \n isRemember: ${isRememberMe}`,
+        // );
     //   return;
     // } else {
       // try {
@@ -63,14 +63,14 @@ const SignInScreen = ({navigation, route}: any) => {
         
       //   if (response.ok) {
       //     // Successful login
-      //     Alert.alert('ログイン成功', `ようこそ ${data.name}`);
+      //     Alert.alert('Login successful', `Welcome ${data.name}`);
       //     navigation.navigate('Home');
       //   } else {
       //     // Handle login failure
-      //     Alert.alert('ログイン失敗', data.message || '無効な認証情報');
+      //     Alert.alert('Login Failed', data.message || 'Invalid Credentials');
       //   }
       // } catch (error) {
-      //   Alert.alert('エラー', '何か問題が発生しました。');
+      //   Alert.alert('Errot', 'Something went wrong.');
       //   console.error(error);
       // }
      
@@ -90,7 +90,7 @@ const SignInScreen = ({navigation, route}: any) => {
           <Image source={Logo} style={styles.logo} />
           <View style={PageStyles.mainArea}>
             <View style={styles.titleAndDescription}>
-              <Text style={styles.title}>ログイン</Text>
+              <Text style={styles.title}>Sign In</Text>
             </View>
 
             <MailAndPasswordInput
@@ -105,14 +105,14 @@ const SignInScreen = ({navigation, route}: any) => {
             />
 
             <View style={styles.loginbuttonSctionContainer}>
-              <LoginSignupButton label="ログイン" onClick={HandleSignIn} />
+              <LoginSignupButton label="Sign In" onClick={HandleSignIn} />
 
               <View style={styles.createAccountContainer}>
                 <TouchableOpacity>
                   <Text
                     style={PageStyles.underlineLink}
                     onPress={navigateToSignup}>
-                    新規登録はこちら
+                    Create an Account
                   </Text>
                 </TouchableOpacity>
               </View>
