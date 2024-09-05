@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { API_URL, API_KEY } from '@env';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   View,
@@ -72,6 +73,7 @@ const SignInScreen = ({navigation, route}: any) => {
       //   Alert.alert('エラー', '何か問題が発生しました。');
       //   console.error(error);
       // }
+     
       navigation.navigate('Home');
       
     // }
