@@ -29,26 +29,26 @@ const PaymentScreen = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={styles.hometext}>お支払い方法を選択してください</Text>
+        <Text style={styles.hometext}>Please Select Payment Method</Text>
 
         <TouchableOpacity
           style={styles.paymentOption}
           onPress={() => handlePaymentSelection('Bank Transfer')}>
           <Image source={banklogo} style={styles.logoImage}></Image>
-          <Text style={styles.paymentText}>銀行決済</Text>
+          <Text style={styles.paymentText}>Bank</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.paymentOption}
           onPress={() => handlePaymentSelection('Stripe')}>
           <Image source={stripelogo} style={styles.logoImage}></Image>
-          <Text style={styles.paymentText}>Stripe決済</Text>
+          <Text style={styles.paymentText}>Stripe</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.paymentOption}
           onPress={() => handlePaymentSelection('PayPal')}>
           <Image source={paypallogo} style={styles.logoImage}></Image>
-          <Text style={styles.paymentText}>PayPal決済</Text>
+          <Text style={styles.paymentText}>PayPal</Text>
         </TouchableOpacity>
 
         {selectedPaymentMethod && (
