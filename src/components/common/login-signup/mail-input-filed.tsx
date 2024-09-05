@@ -22,7 +22,7 @@ const MailInputField = ({email, onChange, isInvalid = false}: Props) => {
           if (onChange) onChange(value);
         }}
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
-        placeholder="メールアドレス"
+        placeholder="Email Address"
         keyboardType="email-address"
         autoCapitalize="none"
       />

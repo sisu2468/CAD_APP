@@ -8,7 +8,7 @@ const CompanyNameInputField = () => {
       <Icon name="business" size={18} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder="会社名"
+        placeholder="Company Name"
         autoCapitalize="words"
       />
     </View>

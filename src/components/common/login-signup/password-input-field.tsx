@@ -29,7 +29,7 @@ const PasswordInputField = ({password, onChange, isInvalid = false}: Props) => {
           if (onChange) onChange(value);
         }}
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
-        placeholder="パスワード"
+        placeholder="Password"
         keyboardType="default"
         autoCapitalize="none"
         secureTextEntry={isHide}

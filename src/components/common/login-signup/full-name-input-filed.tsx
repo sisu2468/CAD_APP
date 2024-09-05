@@ -7,7 +7,7 @@ const FullNameInputField = () => {
       <Icon name="user" size={18} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder="氏名"
+        placeholder="Full Name"
         autoCapitalize="words"
       />
     </View>

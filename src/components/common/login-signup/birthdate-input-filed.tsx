@@ -9,7 +9,7 @@ const BirthDateInputField = () => {
       <Icon name="calendar" size={18} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder="生年月日"
+        placeholder="Birthdate"
         autoCapitalize="none"
       />
     </View>

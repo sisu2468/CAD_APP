@@ -34,7 +34,7 @@ const PasswordConfrimInputField = ({
           if (onChange) onChange(value);
         }}
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
-        placeholder="パスワード確認"
+        placeholder="Confirm Password"
         keyboardType="default"
         autoCapitalize="none"
         secureTextEntry={isHide}
