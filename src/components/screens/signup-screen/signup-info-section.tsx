@@ -39,7 +39,7 @@ const SignupOptionAndInfoSection = ({
     useState<boolean>(false);
 
   const handleEmailChange = (text: string) => {
-    handleInputChange('電子メール', text);
+    handleInputChange('email', text);
     setIsInvalidEmail(false);
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -51,7 +51,7 @@ const SignupOptionAndInfoSection = ({
   };
 
   const handlePasswordChange = (text: string) => {
-    handleInputChange('パスワード', text);
+    handleInputChange('password', text);
     setIsPasswordWeak(false);
 
     const passwordRegex =
@@ -64,7 +64,7 @@ const SignupOptionAndInfoSection = ({
   };
 
   const handlePasswordConfirmChange = (text: string) => {
-    handleInputChange('パスワード確認', text);
+    handleInputChange('confirmPassword', text);
     setIsNotPasswordMatching(false);
 
     if (password !== text) {
@@ -80,7 +80,7 @@ const SignupOptionAndInfoSection = ({
   return (
     <LoginSignUpContainer>
       <SSOWithGoogle
-        label="Googleに登録する"
+        label="Sign Up With Google"
         onClick={handleSSOWithGoogle}
       />
       <Text style={styles.separator}>- OR -</Text>
@@ -111,42 +111,42 @@ const SignupOptionAndInfoSection = ({
           isNotPasswordMatching
         ) && (
           <Text style={styles.normalText}>
-            すでにアカウントをお持ちですか?{' '}
+            Already have and account?{' '}
             <Text
               style={PageStyles.underlineLink}
               onPress={naviagteToSignInScreen}>
-              ログイン
+              Sign In
             </Text>
           </Text>
         )}
         {isUserDuplicated && (
           <Text style={styles.errorText}>
-            このメールアドレスはすでに使用されています。{' '}
+            This email is already in use.{' '}
             <Text
               style={PageStyles.underlineLink}
               onPress={naviagteToSignInScreen}>
-              代わりにサインインしますか?
+              Sign in instead?
             </Text>
           </Text>
         )}
         {isInvalidEmail && (
           <View style={styles.warnningMessageContainer}>
             <Icon name="error-outline" size={18} color={'#FF0000'} />
-            <Text style={styles.errorText}>電子メールの種類が無効です。</Text>
+            <Text style={styles.errorText}>Invalid Email Type.</Text>
           </View>
         )}
         {isPasswordWeak && (
           <View style={styles.warnningMessageContainer}>
             <Icon name="error-outline" size={18} color={'#FF0000'} />
             <Text style={styles.errorText}>
-              より強力なパスワードを選択してください。文字、数字、記号を組み合わせてみてください。
+              Please choose a stronger password. Try a mix of letters, numbers,
             </Text>
           </View>
         )}
         {isNotPasswordMatching && (
           <View style={styles.warnningMessageContainer}>
             <Icon name="error-outline" size={18} color={'#FF0000'} />
-            <Text style={styles.errorText}>パスワードが一致しません。</Text>
+            <Text style={styles.errorText}>Passwords do not match.</Text>
           </View>
         )}
       </View>
