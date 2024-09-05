@@ -39,10 +39,10 @@ const DesignScreen = ({navigation, route}: any) => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.importImage}>
-          <Text style={styles.hometext}>画像をアップロード</Text>
+          <Text style={styles.hometext}>Upload Image</Text>
 
           <TouchableOpacity style={styles.button} onPress={handleSelectImage}>
-            <Text style={styles.buttonText}>画像を選択</Text>
+            <Text style={styles.buttonText}>Select Image</Text>
           </TouchableOpacity>
 
           {imageUri && (
@@ -52,7 +52,7 @@ const DesignScreen = ({navigation, route}: any) => {
           )}
         </View>
         <View style={styles.exportdesign}>
-          <Text style={styles.hometext}>生成された図面データ</Text>
+          <Text style={styles.hometext}>Created Design Data</Text>
         </View>
       </ScrollView>
       <Footer style={styles.footer} navigation={navigation} />
@@ -63,13 +63,14 @@ const DesignScreen = ({navigation, route}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#001a00',
+    backgroundColor: '#ffffff',
+    padding: 10,
   },
   importImage: {
     display: 'flex',
     width: '100%',
     height: 500,
-    borderColor: '#ffffff',
+    borderColor: '#000000',
     borderWidth: 2,
     marginBottom: 30,
     marginTop: 20,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   exportdesign: {
     width: '100%',
     height: 500,
-    borderColor: '#ffffff',
+    borderColor: '#000000',
     borderWidth: 2,
   },
   scrollContent: {
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   hometext: {
-    color: '#03f8ff',
+    color: '#000000',
     fontSize: 24,
     textAlign: 'center',
     paddingTop: 20,
