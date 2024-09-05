@@ -39,29 +39,29 @@ const UserScreen = ({ navigation }: any) => {
         <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
           <Image source={previousButton} style={styles.previousButton} />
           <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>アカウント詳細</Text>
+            <Text style={styles.headertext}>Account details</Text>
           </View>
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
           <Image source={userinfo} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>個人情報</Text>
+          <Text style={styles.buttonText}>Personal Information</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPayment}>
           <Image source={usercost} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>料金管理</Text>
+          <Text style={styles.buttonText}>Payment Information</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPassword}>
           <Image source={userpwd} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>パスワード管理</Text>
+          <Text style={styles.buttonText}>Change Password</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditDesign}>
-          <Text style={styles.buttonText}>データ管理</Text>
+          <Text style={styles.buttonText}>Design Management</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleSignOut}>
           <Image source={userlogout} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>ログアウト</Text>
+          <Text style={styles.buttonText}>Sign Out</Text>
         </TouchableOpacity>
       </View>
       <Footer style={styles.footer} navigation={navigation} />
