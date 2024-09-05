@@ -124,7 +124,7 @@ const HomeScreen = ({navigation, route}: any) => {
         </View>
         <View>
           <Text style={styles.hometext}>Recently Processed Drawings</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <ScrollView style={styles.design} horizontal showsHorizontalScrollIndicator={false}>
             <Image source={design1} style={styles.designimage} />
             <Image source={design2} style={styles.designimage} />
             <Image source={design3} style={styles.designimage} />
@@ -160,6 +160,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
 
   },
+  design: {
+    borderBottomWidth: 0.8,
+    borderTopWidth: 0.8,
+  },
   photocontent: {
     marginTop: 20,
   },
@@ -169,7 +173,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   hometext: {
-    color: '#03f8ff',
+    color: '#000000',
     fontSize: 24,
     textAlign: 'center',
     marginBottom: 25,
@@ -201,6 +205,7 @@ const styles = StyleSheet.create({
   designimage: {
     width: Dimensions.get('window').width * 0.9, // Adjust width for horizontal scroll
     height: 250,
+    borderWidth: 0.8,
     // width: '100%',
     marginRight: 10, // Add space between images
   },
