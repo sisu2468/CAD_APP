@@ -34,52 +34,52 @@ const UserPassword = ({ navigation, route }: any) => {
         <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
           <Image source={previousButton} style={styles.previousButton} />
           <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>パスワード管理</Text>
+            <Text style={styles.headertext}>Password</Text>
           </View>
         </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Image source={passwordImage} style={styles.passwordImage}></Image>
         <View style={styles.content}>
-          <Text style={styles.label}>メールアドレス</Text>
+          <Text style={styles.label}>Email Address</Text>
           <TextInput
             style={styles.input}
-            placeholder='メールアドレス'
+            placeholder='Email Address'
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
 
-          <Text style={styles.label}>現在パスワード</Text>
+          <Text style={styles.label}>Current Password</Text>
           <TextInput
             style={styles.input}
-            placeholder='現在パスワード'
+            placeholder='Current Password'
             value={email}
             onChangeText={setEmail}
             keyboardType="visible-password"
           />
 
-          <Text style={styles.label}>パスワード</Text>
+          <Text style={styles.label}>New Password</Text>
           <TextInput
             style={styles.input}
-            placeholder='パスワード'
+            placeholder='New Password'
             value={email}
             onChangeText={setEmail}
             keyboardType="visible-password"
           />
 
-          <Text style={styles.label}>パスワード（確認用）</Text>
+          <Text style={styles.label}>Confirm Password</Text>
           <TextInput
             style={styles.input}
-            placeholder='パスワード（確認用）'
+            placeholder='Confirm Password'
             value={email}
             onChangeText={setEmail}
             keyboardType="visible-password"
           />
+          <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
+            <Text style={styles.updateButtonText}>Change Password</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-          <Text style={styles.updateButtonText}>情報更新</Text>
-        </TouchableOpacity>
       </ScrollView>
 
     </SafeAreaView>

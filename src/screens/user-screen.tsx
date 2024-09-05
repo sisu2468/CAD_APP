@@ -54,7 +54,7 @@ const UserScreen = ({ navigation }: any) => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPassword}>
           <Image source={userpwd} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>Change Password</Text>
+          <Text style={styles.buttonText}>Password</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditDesign}>
           <Text style={styles.buttonText}>Design Management</Text>
