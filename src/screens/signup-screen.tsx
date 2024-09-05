@@ -20,7 +20,7 @@ const SignUpScreen = ({navigation}: any) => {
   }, [email, password, confirmPassword]);
 
   const handleSSOWithGoogle = () => {
-    Alert.alert('しばらくお待ちください。機能の実装');
+    Alert.alert('Please wait. Implementing the feature');
   };
 
   const handleSignUpWithEmail = () => {
@@ -72,7 +72,7 @@ const SignUpScreen = ({navigation}: any) => {
           <Image source={Logo} style={styles.logo} />
           <View style={PageStyles.mainArea}>
             <View style={styles.titleAndDescription}>
-              <Text style={styles.title}>アカウントの作成</Text>
+              <Text style={styles.title}>Create an Account</Text>
             </View>
 
             <SignupOptionAndInfoSection
@@ -87,7 +87,7 @@ const SignUpScreen = ({navigation}: any) => {
 
             <View style={styles.loginbuttonSctionContainer}>
               <LoginSignupButton
-                label="スタート"
+                label="Get Started"
                 onClick={handleSignUpWithEmail}
               />
             </View>
