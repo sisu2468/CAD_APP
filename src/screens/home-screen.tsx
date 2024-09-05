@@ -154,7 +154,7 @@ const HomeScreen = ({navigation, route}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#001a00',
+    backgroundColor: '#ffffff',
   },
   scrollContent: {
     flexGrow: 1,
