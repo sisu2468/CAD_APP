@@ -88,7 +88,7 @@ const UserInfo = ({ navigation, route }: any) => {
         <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
           <Image source={previousButton} style={styles.previousButton} />
           <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>個人情報</Text>
+            <Text style={styles.headertext}>Personal Information</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -107,13 +107,13 @@ const UserInfo = ({ navigation, route }: any) => {
         <View style={styles.form}>
           <TextInput
             style={styles.input}
-            placeholder="ユーザー名"
+            placeholder="Full Name"
             value={username}
             onChangeText={setUsername}
           />
           <TextInput
             style={styles.input}
-            placeholder='メールアドレス'
+            placeholder='Email Address'
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -135,7 +135,7 @@ const UserInfo = ({ navigation, route }: any) => {
             />
             <TextInput
               style={styles.phoneNumberInput}
-              placeholder="電話番号"
+              placeholder="Phone Number"
               value={phoneNumber}
               onChangeText={setPhoneNumber}
               keyboardType="phone-pad"
@@ -143,13 +143,13 @@ const UserInfo = ({ navigation, route }: any) => {
           </View>
           <TextInput
             style={styles.input}
-            placeholder="会社名"
+            placeholder="Company Name"
             value={companyName}
             onChangeText={setCompanyName}
           />
           <TextInput
             style={styles.input}
-            placeholder="生年月日"
+            placeholder="Birthdate"
             value={birthDate}
             onFocus={showDatePicker} // Show date picker when input is focused
           />
@@ -164,7 +164,7 @@ const UserInfo = ({ navigation, route }: any) => {
           )}
           <TextInput
             style={styles.input}
-            placeholder="料金"
+            placeholder="Payment"
             value={cost}
             onChangeText={setCost}
             editable={false}
@@ -172,7 +172,7 @@ const UserInfo = ({ navigation, route }: any) => {
           />
           <TextInput
             style={styles.input}
-            placeholder="参加日"
+            placeholder="Created Date"
             value={createdate}
             onChangeText={setCreateDate}
             editable={false}
@@ -180,7 +180,7 @@ const UserInfo = ({ navigation, route }: any) => {
           />
 
           <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-            <Text style={styles.updateButtonText}>情報更新</Text>
+            <Text style={styles.updateButtonText}>Update</Text>
           </TouchableOpacity>        
         </View>
       </ScrollView>
