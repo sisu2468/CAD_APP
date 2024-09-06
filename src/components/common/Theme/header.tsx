@@ -24,25 +24,29 @@ const Header = ({ title, navigation, route }: any) => {
     i18n.changeLanguage(lng);
   };
 
-  const previousButton = require('../../../assets/images/ep_back.png')
+  const previousButton = require('../../../assets/images/ep_back.png');
   
   return (
     <View style={styles.header}>
-        <View style={styles.status}>
-        <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
-          <Image source={previousButton} style={styles.previousButton} />
-          <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>{title}</Text>
-          </View>
-        </TouchableOpacity>
+      {/* Previous Button */}
+      <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
+        <Image source={previousButton} style={styles.previousButton} />
+      </TouchableOpacity>
+
+      {/* Title in Center */}
+      <View style={styles.titleContainer}>
+        <Text style={styles.headertext}>{title}</Text>
       </View>
+
+      {/* Settings Icon */}
       <TouchableOpacity onPress={toggleModal}>
         <Image source={SettingImage} style={styles.icon} />
       </TouchableOpacity>
 
+      {/* Modal for Language Change */}
       <Modal
         isVisible={isModalVisible}
-        onBackdropPress={() => setModalVisible(false)} // Close modal when clicking outside of it
+        onBackdropPress={() => setModalVisible(false)}
         style={styles.modal}>
         <View style={styles.dropdown}>
           <TouchableOpacity onPress={() => changeLanguage('en')}>
@@ -60,44 +64,41 @@ const Header = ({ title, navigation, route }: any) => {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingVertical: 10,
     backgroundColor: '#ffffff',
     height: 65,
     zIndex: 99999,
-  },
-  status: {
-    paddingLeft: 20,
     borderBottomColor: '#292929',
     borderBottomWidth: 0.5,
+    marginBottom: 10,
   },
   previousstyle: {
-    flexDirection: 'row', // Aligns the image and text horizontally
-    alignItems: 'center', // Centers the image and text vertically
-    justifyContent: 'center', // Centers content horizontally
-  },
-  headertextContainer: {
-    flex: 1, // Takes up remaining space after the image
-    justifyContent: 'center', // Centers text vertically within this container
-  },
-  headertext: {
-    textAlign: 'center',
-    fontSize: 18,
-    color: '#000000',
-    fontWeight: '700',
-    paddingBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center', // Aligns image and text vertically
   },
   previousButton: {
     width: 25,
     height: 25,
   },
+  titleContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    alignItems: 'center', // Center the title horizontally
+    justifyContent: 'center', // Center the title vertically
+  },
+  headertext: {
+    fontSize: 18,
+    color: '#000000',
+    fontWeight: '700',
+    textAlign: 'center',
+  },
   icon: {
-    width: 25,  // Increased size for better visibility
+    width: 25,
     height: 25,
-    right: 5,
   },
   modal: {
     justifyContent: 'flex-start',
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#cccccc',
     borderWidth: 1,
-    width: 150, // Adjust the width as needed
+    width: 150,
     marginTop: 50,
   },
   dropdownText: {
