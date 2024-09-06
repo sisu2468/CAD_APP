@@ -33,8 +33,8 @@ const UserInfo = ({ navigation, route }: any) => {
   const [showPicker, setShowPicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const [countryCode, setCountryCode] = useState('US');
-  const [callingCode, setCallingCode] = useState('+1');
+  const [countryCode, setCountryCode] = useState('JP');
+  const [callingCode, setCallingCode] = useState('+81');
   const [showCountryPicker, setShowCountryPicker] = useState(false);
 
   const handleCountrySelect = (country) => {

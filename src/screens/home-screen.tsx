@@ -9,9 +9,13 @@ import {
   ScrollView,
   Dimensions,
   Animated,
+  Button,
 } from 'react-native';
 
 import Footer from '../components/common/Theme/footer';
+import Header from '../components/common/Theme/header';
+import { useTranslation } from 'react-i18next';
+
 
 const fvimage1 = require('assets/images/machine_cad_1.jpg');
 const fvimage2 = require('assets/images/machine_cad_2.jpg');
@@ -39,10 +43,12 @@ const design5 = require('assets/designs/design5.jpg');
 const { width } = Dimensions.get('window');
 const { height } = Dimensions.get('window');
 
+
 const HomeScreen = ({navigation, route}: any) => {
+  const { t, i18n } = useTranslation();
+
   // fadeAnim will be used as the value for opacity. Initial Value: 0
   const fadeAnim = useRef(new Animated.Value(0)).current;
-  let transheight = height * 1 / 3;
   const translateX = useRef(new Animated.Value(0)).current; // Initialize translateX for sliding
   const scale = useRef(new Animated.Value(1)).current;  // For zoom out (initial value > 1)
 
@@ -105,6 +111,7 @@ const HomeScreen = ({navigation, route}: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header title={t('home.HOME')} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.fadingContainer}>
           <Animated.View
@@ -123,7 +130,7 @@ const HomeScreen = ({navigation, route}: any) => {
           </Animated.View>
         </View>
         <View>
-          <Text style={styles.hometext}>Recently Processed Drawings</Text>
+          <Text style={styles.hometext}>{t('home.Drawings')}</Text>
           <ScrollView style={styles.design} horizontal showsHorizontalScrollIndicator={false}>
             <Image source={design1} style={styles.designimage} />
             <Image source={design2} style={styles.designimage} />
@@ -133,7 +140,7 @@ const HomeScreen = ({navigation, route}: any) => {
           </ScrollView>
         </View>
         <View style={styles.photocontent}>
-          <Text style={styles.hometext}>Recently Captured Photos</Text>
+          <Text style={styles.hometext}>{t('home.Photos')}</Text>
           <View style={styles.photoimages}>
             <Image source={photoimage1_0} style={styles.photoimage} />
             <Image source={photoimage1_1} style={styles.photoimage} />
@@ -178,6 +185,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 25,
     fontWeight: '800',
+    fontFamily: 'NotoSansJP-Regular',  // 日本語用フォントを指定 (Noto Sans JP など)
   },
   fvimges: {
     width: Dimensions.get('window').width * 0.7, // Adjust width for horizontal scroll

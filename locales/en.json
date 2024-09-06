@@ -1,0 +1,13 @@
+{
+    "welcome": "Welcome",
+    "profile": {
+      "edit": "Edit Profile",
+      "logout": "Logout"
+    },
+    "home": {
+      "HOME": "HOME",
+      "Drawings": "Recently Processed Drawings",
+      "Photos": "Recently Captured Photos"
+    }
+  }
+  

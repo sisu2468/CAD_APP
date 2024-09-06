@@ -1,0 +1,15 @@
+{
+    "profile": {
+      "edit": "プロフィールを編集",
+      "logout": "ログアウト"
+    },
+    "home": {
+      "HOME": "HOME",
+      "Drawings": "最近処理された図面",
+      "Photos": "最近キャプチャされた写真"
+    },
+    "design": {
+      "design": "DESIGN"
+    }
+  }
+  

@@ -9,7 +9,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { useTranslation } from 'react-i18next';
+
 import Footer from '../components/common/Theme/footer';
+import Header from '../components/common/Theme/header';
 
 const DesignScreen = ({navigation, route}: any) => {
   const [imageUri, setImageUri] = useState(null);
@@ -34,9 +37,11 @@ const DesignScreen = ({navigation, route}: any) => {
       }
     });
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header title={t('design.design')} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.importImage}>
           <Text style={styles.hometext}>Upload Image</Text>
