@@ -9,7 +9,10 @@
       "Photos": "最近キャプチャされた写真"
     },
     "design": {
-      "design": "DESIGN"
+      "design": "図面ページ",
+      "upload": "画像をアップロード",
+      "select": "画像を選択",
+      "create": "作成した設計データ"
     }
   }
   

@@ -44,10 +44,10 @@ const DesignScreen = ({navigation, route}: any) => {
       <Header title={t('design.design')} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.importImage}>
-          <Text style={styles.hometext}>Upload Image</Text>
+          <Text style={styles.hometext}>{t('design.select')}</Text>
 
           <TouchableOpacity style={styles.button} onPress={handleSelectImage}>
-            <Text style={styles.buttonText}>Select Image</Text>
+            <Text style={styles.buttonText}>{t('design.upload')}</Text>
           </TouchableOpacity>
 
           {imageUri && (
@@ -57,7 +57,7 @@ const DesignScreen = ({navigation, route}: any) => {
           )}
         </View>
         <View style={styles.exportdesign}>
-          <Text style={styles.hometext}>Created Design Data</Text>
+          <Text style={styles.hometext}>{t('design.create')}</Text>
         </View>
       </ScrollView>
       <Footer style={styles.footer} navigation={navigation} />
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    padding: 10,
   },
   importImage: {
     display: 'flex',
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     justifyContent: 'center',
+    padding: 10,
     alignItems: 'center',
   },
   hometext: {

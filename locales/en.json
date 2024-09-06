@@ -8,6 +8,12 @@
       "HOME": "HOME",
       "Drawings": "Recently Processed Drawings",
       "Photos": "Recently Captured Photos"
+    },
+    "design": {
+      "design": "DESIGN",
+      "upload": "Upload Image",
+      "select": "Select Image",
+      "create": "Created Design Data"
     }
   }
   
