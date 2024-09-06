@@ -10,6 +10,8 @@ import {
   Image,
 } from 'react-native';
 import Footer from '../components/common/Theme/footer';
+import { useTranslation } from 'react-i18next';
+import Header from '../components/common/Theme/header';
 
 const { width } = Dimensions.get('window');
 const paypallogo = require('../assets/images/paypal.png')
@@ -18,6 +20,8 @@ const banklogo = require('../assets/images/Japan-Bank3.png')
 
 
 const PaymentScreen = ({ navigation }: any) => {
+  const { t, i18n } = useTranslation();
+
   // State for selected payment method
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 
@@ -28,27 +32,28 @@ const PaymentScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header title={t('payment.payment')} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={styles.hometext}>Please Select Payment Method</Text>
+        <Text style={styles.hometext}>{t('payment.select')}</Text>
 
         <TouchableOpacity
           style={styles.paymentOption}
           onPress={() => handlePaymentSelection('Bank Transfer')}>
           <Image source={banklogo} style={styles.logoImage}></Image>
-          <Text style={styles.paymentText}>Bank</Text>
+          <Text style={styles.paymentText}>{t('payment.bank')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.paymentOption}
           onPress={() => handlePaymentSelection('Stripe')}>
           <Image source={stripelogo} style={styles.logoImage}></Image>
-          <Text style={styles.paymentText}>Stripe</Text>
+          <Text style={styles.paymentText}>{t('payment.stripe')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.paymentOption}
           onPress={() => handlePaymentSelection('PayPal')}>
           <Image source={paypallogo} style={styles.logoImage}></Image>
-          <Text style={styles.paymentText}>PayPal</Text>
+          <Text style={styles.paymentText}>{t('payment.paypal')}</Text>
         </TouchableOpacity>
 
         {selectedPaymentMethod && (

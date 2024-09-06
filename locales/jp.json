@@ -13,6 +13,13 @@
       "upload": "画像をアップロード",
       "select": "画像を選択",
       "create": "作成した設計データ"
+    },
+    "payment": {
+      "payment": "決済管理",
+      "select": "お支払い方法を選択してください",
+      "bank": "銀行",
+      "stripe": "Stripe",
+      "paypal": "PayPal"
     }
   }
   
