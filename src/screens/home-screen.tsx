@@ -111,7 +111,7 @@ const HomeScreen = ({navigation, route}: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={t('home.HOME')} />
+      <Header title={t('home.HOME')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.fadingContainer}>
           <Animated.View

@@ -14,6 +14,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';import {
 import { launchImageLibrary } from 'react-native-image-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import CountryPicker from 'react-native-country-picker-modal';
+import Header from '../../../components/common/Theme/header';
+import { useTranslation } from 'react-i18next';
 
 const defaultprofileImage = require('../../../assets/images/avatar.png')
 const logoImage = require('../../../assets/images/Delite_logo.png')
@@ -21,6 +23,8 @@ const previousButton = require('../../../assets/images/ep_back.png')
 
 
 const UserInfo = ({ navigation, route }: any) => {
+  const { t, i18n } = useTranslation();
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -84,15 +88,7 @@ const UserInfo = ({ navigation, route }: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.status}>
-        <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
-          <Image source={previousButton} style={styles.previousButton} />
-          <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>Personal Information</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-
+      <Header title={t('userinfo')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.profileImageContainer}>
           <TouchableOpacity onPress={handleSelectImage}>
@@ -107,13 +103,13 @@ const UserInfo = ({ navigation, route }: any) => {
         <View style={styles.form}>
           <TextInput
             style={styles.input}
-            placeholder="Full Name"
+            placeholder={t('person.fullname')}
             value={username}
             onChangeText={setUsername}
           />
           <TextInput
             style={styles.input}
-            placeholder='Email Address'
+            placeholder={t('person.email')}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -135,7 +131,7 @@ const UserInfo = ({ navigation, route }: any) => {
             />
             <TextInput
               style={styles.phoneNumberInput}
-              placeholder="Phone Number"
+              placeholder={t('person.phone')}
               value={phoneNumber}
               onChangeText={setPhoneNumber}
               keyboardType="phone-pad"
@@ -143,13 +139,13 @@ const UserInfo = ({ navigation, route }: any) => {
           </View>
           <TextInput
             style={styles.input}
-            placeholder="Company Name"
+            placeholder={t('person.company')}
             value={companyName}
             onChangeText={setCompanyName}
           />
           <TextInput
             style={styles.input}
-            placeholder="Birthdate"
+            placeholder={t('person.birthdate')}
             value={birthDate}
             onFocus={showDatePicker} // Show date picker when input is focused
           />
@@ -164,7 +160,7 @@ const UserInfo = ({ navigation, route }: any) => {
           )}
           <TextInput
             style={styles.input}
-            placeholder="Payment"
+            placeholder={t('person.credit')}
             value={cost}
             onChangeText={setCost}
             editable={false}
@@ -172,7 +168,7 @@ const UserInfo = ({ navigation, route }: any) => {
           />
           <TextInput
             style={styles.input}
-            placeholder="Created Date"
+            placeholder={t('person.createdate')}
             value={createdate}
             onChangeText={setCreateDate}
             editable={false}
@@ -180,7 +176,7 @@ const UserInfo = ({ navigation, route }: any) => {
           />
 
           <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-            <Text style={styles.updateButtonText}>Update</Text>
+            <Text style={styles.updateButtonText}>{t('update')}</Text>
           </TouchableOpacity>        
         </View>
       </ScrollView>

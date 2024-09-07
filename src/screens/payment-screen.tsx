@@ -32,7 +32,7 @@ const PaymentScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={t('payment.payment')} />
+      <Header title={t('payment.payment')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Text style={styles.hometext}>{t('payment.select')}</Text>
 

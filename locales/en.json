@@ -1,6 +1,7 @@
 {
     "login": "Sign In",
     "logout": "Sign Out",
+    "update": "Upadate",
     "home": {
       "HOME": "HOME",
       "Drawings": "Recently Processed Drawings",
@@ -19,12 +20,21 @@
       "stripe": "Stripe",
       "paypal": "PayPal"
     },
+    "userinfo": "Personal Information",
     "user": {
       "details": "Account Details",
-      "userinfo": "Personal Information",
       "payinfo": "Payment Information",
       "pwd": "Password Management",
       "design": "Design Management"
+    },
+    "person": {
+      "fullname": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "birthdate": "Birthdate",
+      "credit": "Credit",
+      "createdate": "Created Date"
     }
   }
   

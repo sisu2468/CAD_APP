@@ -40,11 +40,11 @@ const UserScreen = ({ navigation }: any) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={t('user.details')} />
+      <Header title={t('user.details')}  navigation={navigation} />
       <View style={styles.content}>
         <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
           <Image source={userinfo} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>{t('user.userinfo')}</Text>
+          <Text style={styles.buttonText}>{t('userinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPayment}>
           <Image source={usercost} style={styles.logoImage}></Image>

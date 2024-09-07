@@ -28,34 +28,34 @@ const Header = ({ title, navigation, route }: any) => {
   
   return (
     <View style={styles.header}>
-        <TouchableOpacity style={styles.previousstyle}  onPress={() => navigation.goBack()}>
-            <Image source={previousButton} style={styles.previousButton} />
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.previousstyle}  onPress={() => navigation.goBack()}>
+          <Image source={previousButton} style={styles.previousButton} />
+      </TouchableOpacity>
 
-        {/* Title in Center */}
-        <View style={styles.titleContainer}>
-            <Text style={styles.headertext}>{title}</Text>
-        </View>
+      {/* Title in Center */}
+      <View style={styles.titleContainer}>
+          <Text style={styles.headertext}>{title}</Text>
+      </View>
 
-        {/* Settings Icon */}
-        <TouchableOpacity onPress={toggleModal}>
-            <Image source={SettingImage} style={styles.icon} />
-        </TouchableOpacity>
+      {/* Settings Icon */}
+      <TouchableOpacity onPress={toggleModal}>
+          <Image source={SettingImage} style={styles.icon} />
+      </TouchableOpacity>
 
-        {/* Modal for Language Change */}
-        <Modal
-            isVisible={isModalVisible}
-            onBackdropPress={() => setModalVisible(false)}
-            style={styles.modal}>
-            <View style={styles.dropdown}>
-            <TouchableOpacity onPress={() => changeLanguage('en')}>
-                <Text style={styles.dropdownText}>English</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => changeLanguage('jp')}>
-                <Text style={styles.dropdownText}>日本語</Text>
-            </TouchableOpacity>
-            </View>
-        </Modal>
+      {/* Modal for Language Change */}
+      <Modal
+          isVisible={isModalVisible}
+          onBackdropPress={() => setModalVisible(false)}
+          style={styles.modal}>
+          <View style={styles.dropdown}>
+          <TouchableOpacity onPress={() => changeLanguage('en')}>
+              <Text style={styles.dropdownText}>English</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => changeLanguage('jp')}>
+              <Text style={styles.dropdownText}>日本語</Text>
+          </TouchableOpacity>
+          </View>
+      </Modal>
     </View>
   );
 };

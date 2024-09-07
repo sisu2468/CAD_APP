@@ -1,6 +1,8 @@
 {
     "login": "ログイン",
     "logout": "ログアウト",
+    "update": "アップデート",
+
     "home": {
       "HOME": "ホーム",
       "Drawings": "最近処理された図面",
@@ -19,12 +21,21 @@
       "stripe": "Stripe",
       "paypal": "PayPal"
     },
+    "userinfo": "個人情報",
     "user": {
       "details": "アカウントの詳細",
-      "userinfo": "個人情報",
       "payinfo": "お支払い情報",
       "pwd": "パスワード管理",
       "design": "デザインマネジメント"
+    },
+    "person": {
+      "fullname": "氏名",
+      "email": "メールアドレス",
+      "phone": "電話番号",
+      "company": "会社名",
+      "birthdate": "生年月日",
+      "credit": "クレジット",
+      "createdate": "作成日"
     }
   }
   

@@ -41,7 +41,7 @@ const DesignScreen = ({navigation, route}: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={t('design.design')} />
+      <Header title={t('design.design')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.importImage}>
           <Text style={styles.hometext}>{t('design.select')}</Text>
