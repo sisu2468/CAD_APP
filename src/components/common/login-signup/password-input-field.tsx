@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {TextInput, StyleSheet, View, TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Octicons';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   password?: string;
@@ -15,6 +16,7 @@ const PasswordInputField = ({password, onChange, isInvalid = false}: Props) => {
   const onPress = () => {
     setIsHide(!isHide);
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <View
@@ -29,7 +31,7 @@ const PasswordInputField = ({password, onChange, isInvalid = false}: Props) => {
           if (onChange) onChange(value);
         }}
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
-        placeholder="Password"
+        placeholder={t('signinfo.pwd')}
         keyboardType="default"
         autoCapitalize="none"
         secureTextEntry={isHide}

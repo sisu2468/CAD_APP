@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { API_URL, API_KEY } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 
 import {
   View,
@@ -19,6 +20,8 @@ import PageStyles from 'components/common/login-signup/style.module';
 const Logo = require('assets/images/Delite_logo.png');
 
 const SignInScreen = ({navigation, route}: any) => {
+  const { t, i18n } = useTranslation();
+
   const isSignout = route?.params?.isSignout || false;
 
   const [email, setEmail] = useState<string>('');
@@ -90,7 +93,7 @@ const SignInScreen = ({navigation, route}: any) => {
           <Image source={Logo} style={styles.logo} />
           <View style={PageStyles.mainArea}>
             <View style={styles.titleAndDescription}>
-              <Text style={styles.title}>Sign In</Text>
+              <Text style={styles.title}>{t('login')}</Text>
             </View>
 
             <MailAndPasswordInput
@@ -105,14 +108,14 @@ const SignInScreen = ({navigation, route}: any) => {
             />
 
             <View style={styles.loginbuttonSctionContainer}>
-              <LoginSignupButton label="Sign In" onClick={HandleSignIn} />
+              <LoginSignupButton label={t('login')} onClick={HandleSignIn} />
 
               <View style={styles.createAccountContainer}>
                 <TouchableOpacity>
                   <Text
                     style={PageStyles.underlineLink}
                     onPress={navigateToSignup}>
-                    Create an Account
+                    {t('signup')}
                   </Text>
                 </TouchableOpacity>
               </View>

@@ -1,13 +1,16 @@
 import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
+import { useTranslation } from 'react-i18next';
 
 const FullNameInputField = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <View style={styles.container}>
       <Icon name="user" size={18} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder="Full Name"
+        placeholder={t('person.fullname')}
         autoCapitalize="words"
       />
     </View>

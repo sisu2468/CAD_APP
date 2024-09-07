@@ -3,6 +3,7 @@ import {TextInput, StyleSheet, View, TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Octicons';
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   confirmPassword?: string;
@@ -20,6 +21,7 @@ const PasswordConfrimInputField = ({
   const onPress = () => {
     setIsHide(!isHide);
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <View
@@ -34,7 +36,7 @@ const PasswordConfrimInputField = ({
           if (onChange) onChange(value);
         }}
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
-        placeholder="Confirm Password"
+        placeholder={t('pwd.confirmpwd')}
         keyboardType="default"
         autoCapitalize="none"
         secureTextEntry={isHide}

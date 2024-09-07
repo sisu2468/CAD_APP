@@ -2,6 +2,7 @@ import PageStyles from 'components/common/login-signup/style.module';
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Fontisto';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   isRemember?: boolean;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const LoginOptions = ({isRemember, setIsRemember}: Props) => {
+  const { t, i18n } = useTranslation();
   const handleIsRemember = () => {
     if (setIsRemember) setIsRemember(!isRemember);
   };
@@ -19,7 +21,7 @@ const LoginOptions = ({isRemember, setIsRemember}: Props) => {
 
   return (
     <View style={styles.optionsRow}>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={handleIsRemember}
         style={styles.checkboxContainer}>
         {isRemember ? (
@@ -27,11 +29,11 @@ const LoginOptions = ({isRemember, setIsRemember}: Props) => {
         ) : (
           <Icon name="checkbox-passive" size={16} color={'#383F41'} />
         )}
-        <Text style={styles.checkboxLabel}>Remember Me</Text>
-      </TouchableOpacity>
+        <Text style={styles.checkboxLabel}>{t('signinfo.remember')}</Text>
+      </TouchableOpacity> */}
       <TouchableOpacity>
         <Text style={PageStyles.underlineLink} onPress={handleForgotPassword}>
-          Forgot Password?
+          {t('signinfo.forgot')}
         </Text>
       </TouchableOpacity>
     </View>
@@ -41,7 +43,7 @@ const LoginOptions = ({isRemember, setIsRemember}: Props) => {
 const styles = StyleSheet.create({
   optionsRow: {
     width: '100%',
-    flexDirection: 'row',
+    // flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },

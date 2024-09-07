@@ -5,10 +5,13 @@ import SignupOptionAndInfoSection from 'components/screens/signup-screen/signup-
 import LoginSignupButton from 'components/common/login-signup/login-signup-button';
 
 import PageStyles from 'components/common/login-signup/style.module';
+import { useTranslation } from 'react-i18next';
 
 const Logo = require('assets/images/Delite_logo.png');
 
 const SignUpScreen = ({navigation}: any) => {
+  const { t, i18n } = useTranslation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -72,7 +75,7 @@ const SignUpScreen = ({navigation}: any) => {
           <Image source={Logo} style={styles.logo} />
           <View style={PageStyles.mainArea}>
             <View style={styles.titleAndDescription}>
-              <Text style={styles.title}>Create an Account</Text>
+              <Text style={styles.title}>{t('signup')}</Text>
             </View>
 
             <SignupOptionAndInfoSection
@@ -87,7 +90,7 @@ const SignUpScreen = ({navigation}: any) => {
 
             <View style={styles.loginbuttonSctionContainer}>
               <LoginSignupButton
-                label="Get Started"
+                label={t('signup')}
                 onClick={handleSignUpWithEmail}
               />
             </View>

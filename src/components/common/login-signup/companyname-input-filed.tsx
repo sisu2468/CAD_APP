@@ -1,14 +1,17 @@
 import { TextInput, StyleSheet, View } from "react-native";
 // import Icon from 'react-native-vector-icons/FontAwesome';  // Use FontAwesome or other icon set
 import Icon from 'react-native-vector-icons/MaterialIcons';  // Use MaterialIcons
+import { useTranslation } from 'react-i18next';
 
 const CompanyNameInputField = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <View style={styles.container}>
       <Icon name="business" size={18} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder="Company Name"
+        placeholder={t('person.company')}
         autoCapitalize="words"
       />
     </View>

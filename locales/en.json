@@ -1,7 +1,23 @@
 {
     "login": "Sign In",
+    "signup": "Sign Up",
     "logout": "Sign Out",
     "update": "Upadate",
+    "signinfo": {
+      "remember": "Remember Me",
+      "pwd": "Password",
+      "create": "Create an Account",
+      "member": "Already have you account?",
+      "already": "This email is already in use.",
+      "invalidemail": "Invalid Email Type.",
+      "insteadsign": "Sign in Instead?",
+      "pwdstrong": "Choose a strong password: use a combination of letters, numbers and symbols and have at least 8 characters.",
+      "pwdunmatch": "Password do not Match",
+      "or": "- OR -",
+      "withgoogle": "Sign Up With Google",
+      "start": "Get Started",
+      "forgot": "Forgot Password?"
+    },
     "home": {
       "HOME": "HOME",
       "Drawings": "Recently Processed Drawings",

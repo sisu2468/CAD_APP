@@ -1,6 +1,7 @@
 import {TextInput, StyleSheet, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   email?: string;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const MailInputField = ({email, onChange, isInvalid = false}: Props) => {
+  const { t, i18n } = useTranslation();
   return (
     <View
       style={[
@@ -22,7 +24,7 @@ const MailInputField = ({email, onChange, isInvalid = false}: Props) => {
           if (onChange) onChange(value);
         }}
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
-        placeholder="Email Address"
+        placeholder={t('person.email')}
         keyboardType="email-address"
         autoCapitalize="none"
       />

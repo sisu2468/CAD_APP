@@ -11,6 +11,7 @@ import PasswordConfrimInputField from 'components/common/login-signup/password-c
 import PageStyles from 'components/common/login-signup/style.module';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   navigation?: any;
@@ -37,6 +38,7 @@ const SignupOptionAndInfoSection = ({
   const [isPasswordWeak, setIsPasswordWeak] = useState<boolean>(false);
   const [isNotPasswordMatching, setIsNotPasswordMatching] =
     useState<boolean>(false);
+    const { t, i18n } = useTranslation();
 
   const handleEmailChange = (text: string) => {
     handleInputChange('email', text);
@@ -80,10 +82,10 @@ const SignupOptionAndInfoSection = ({
   return (
     <LoginSignUpContainer>
       <SSOWithGoogle
-        label="Sign Up With Google"
+        label={t('signinfo.withgoogle')}
         onClick={handleSSOWithGoogle}
       />
-      <Text style={styles.separator}>- OR -</Text>
+      <Text style={styles.separator}>{t('signinfo.or')}</Text>
       <FullNameInputField />
       <CompanyInputField />
       <BirthdateInputField />
@@ -111,42 +113,42 @@ const SignupOptionAndInfoSection = ({
           isNotPasswordMatching
         ) && (
           <Text style={styles.normalText}>
-            Already have and account?{' '}
+            {t('signinfo.member')}
             <Text
               style={PageStyles.underlineLink}
               onPress={naviagteToSignInScreen}>
-              Sign In
+              {t('login')}
             </Text>
           </Text>
         )}
         {isUserDuplicated && (
           <Text style={styles.errorText}>
-            This email is already in use.{' '}
+            {t('signinfo.already')}
             <Text
               style={PageStyles.underlineLink}
               onPress={naviagteToSignInScreen}>
-              Sign in instead?
+              {t('signinfo.insteadsign')}
             </Text>
           </Text>
         )}
         {isInvalidEmail && (
           <View style={styles.warnningMessageContainer}>
             <Icon name="error-outline" size={18} color={'#FF0000'} />
-            <Text style={styles.errorText}>Invalid Email Type.</Text>
+            <Text style={styles.errorText}>{t('signinfo.invalidemail')}</Text>
           </View>
         )}
         {isPasswordWeak && (
           <View style={styles.warnningMessageContainer}>
             <Icon name="error-outline" size={18} color={'#FF0000'} />
             <Text style={styles.errorText}>
-              Please choose a stronger password. Try a mix of letters, numbers,
+              {t('signinfo.pwdstrong')}
             </Text>
           </View>
         )}
         {isNotPasswordMatching && (
           <View style={styles.warnningMessageContainer}>
             <Icon name="error-outline" size={18} color={'#FF0000'} />
-            <Text style={styles.errorText}>Passwords do not match.</Text>
+            <Text style={styles.errorText}>{t('signinfo.pwdunmatch')}</Text>
           </View>
         )}
       </View>
