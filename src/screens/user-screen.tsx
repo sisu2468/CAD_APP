@@ -9,6 +9,8 @@ import {
   Image,
 } from 'react-native';
 import Footer from '../components/common/Theme/footer';
+import Header from '../components/common/Theme/header';
+import { useTranslation } from 'react-i18next';
 
 const { width } = Dimensions.get('window');
 const previousButton = require('../assets/images/ep_back.png')
@@ -16,8 +18,11 @@ const userinfo = require('../assets/images/ph_user-thin.png')
 const userpwd = require('../assets/images/circum_unlock.png')
 const usercost = require('../assets/images/yen_logo.png')
 const userlogout = require('../assets/images/user_logout.png')
+const design = require('assets/images/design_services_24dp.png');
 
 const UserScreen = ({ navigation }: any) => {
+  const { t, i18n } = useTranslation();
+
   const handleEditProfile = () => {
     navigation.navigate('User-Info')
   };
@@ -35,33 +40,27 @@ const UserScreen = ({ navigation }: any) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.status}>
-        <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
-          <Image source={previousButton} style={styles.previousButton} />
-          <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>Account details</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <Header title={t('user.details')} />
       <View style={styles.content}>
         <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
           <Image source={userinfo} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>Personal Information</Text>
+          <Text style={styles.buttonText}>{t('user.userinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPayment}>
           <Image source={usercost} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>Payment Information</Text>
+          <Text style={styles.buttonText}>{t('user.payinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPassword}>
           <Image source={userpwd} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>Password</Text>
+          <Text style={styles.buttonText}>{t('user.pwd')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditDesign}>
-          <Text style={styles.buttonText}>Design Management</Text>
+          <Image source={design} style={styles.logoImage}></Image>
+          <Text style={styles.buttonText}>{t('user.design')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleSignOut}>
           <Image source={userlogout} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>Sign Out</Text>
+          <Text style={styles.buttonText}>{t('logout')}</Text>
         </TouchableOpacity>
       </View>
       <Footer style={styles.footer} navigation={navigation} />

@@ -1,9 +1,6 @@
 {
-    "welcome": "Welcome",
-    "profile": {
-      "edit": "Edit Profile",
-      "logout": "Logout"
-    },
+    "login": "Sign In",
+    "logout": "Sign Out",
     "home": {
       "HOME": "HOME",
       "Drawings": "Recently Processed Drawings",
@@ -21,6 +18,13 @@
       "bank": "Bank",
       "stripe": "Stripe",
       "paypal": "PayPal"
+    },
+    "user": {
+      "details": "Account Details",
+      "userinfo": "Personal Information",
+      "payinfo": "Payment Information",
+      "pwd": "Password Management",
+      "design": "Design Management"
     }
   }
   
