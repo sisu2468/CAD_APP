@@ -92,6 +92,7 @@ const SignUpScreen = ({navigation}: any) => {
               <LoginSignupButton
                 label={t('signup')}
                 onClick={handleSignUpWithEmail}
+                buttontype={'signup'} 
               />
             </View>
           </View>

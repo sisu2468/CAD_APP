@@ -108,7 +108,7 @@ const SignInScreen = ({navigation, route}: any) => {
             />
 
             <View style={styles.loginbuttonSctionContainer}>
-              <LoginSignupButton label={t('login')} onClick={HandleSignIn} />
+              <LoginSignupButton label={t('login')} onClick={HandleSignIn} buttontype={'signin'} />
 
               <View style={styles.createAccountContainer}>
                 <TouchableOpacity>
