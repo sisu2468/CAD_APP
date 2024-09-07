@@ -8,7 +8,7 @@ const CompanyNameInputField = () => {
 
   return (
     <View style={styles.container}>
-      <Icon name="business" size={18} color={'#9D9D9D'} />
+      <Icon name="business" size={20} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
         placeholder={t('person.company')}
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: 16,
+    marginBottom: 20,
   },
   input: {
     flex: 1,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
     fontWeight: 'medium',
-    fontSize: 14,
+    fontSize: 16,
   },
 });
 

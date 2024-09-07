@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet, View } from "react-native";
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useTranslation } from 'react-i18next';
 
 const FullNameInputField = () => {
   const { t, i18n } = useTranslation();
-  const [username, setUsername] = useState('');
+  const [createdate, setCreateDate] = useState('');
 
   return (
     <View style={styles.container}>
-      <Icon name="user" size={20} color={'#9D9D9D'} />
+      <Icon name="calendar" size={20} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder={t('person.fullname')}
-        value={username}
-        onChangeText={setUsername}
+        placeholder={t('person.createdate')}
+        value={createdate}
+        onChangeText={setCreateDate}
+        editable={false}
+        selectTextOnFocus={false}
         autoCapitalize="words"
       />
     </View>

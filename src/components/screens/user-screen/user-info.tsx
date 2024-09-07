@@ -17,16 +17,50 @@ import CountryPicker from 'react-native-country-picker-modal';
 import Header from '../../../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
 
+import LoginSignUpContainer from 'components/common/login-signup/login-signup-container';
+import MailInputField from 'components/common/login-signup/mail-input-filed';
+import CompanyInputField from 'components/common/login-signup/companyname-input-filed';
+import BirthdateInputField from 'components/common/login-signup/birthdate-input-filed';
+import PasswordInputField from 'components/common/login-signup/password-input-field';
+import SSOWithGoogle from 'components/common/login-signup/google-sso';
+import FullNameInputField from 'components/common/login-signup/full-name-input-filed';
+import PasswordConfrimInputField from 'components/common/login-signup/password-confirm-input-field';
+import PhoneNumberInputField from 'components/common/login-signup/phone-number-input-field';
+import UserPaymentField from 'components/common/login-signup/user-payment-field';
+import UserCreatedDateField from 'components/common/login-signup/user-created-date-field';
+
 const defaultprofileImage = require('../../../assets/images/avatar.png')
 const logoImage = require('../../../assets/images/Delite_logo.png')
 const previousButton = require('../../../assets/images/ep_back.png')
 
+type Props = {
+  navigation?: any;
+  handleSSOWithGoogle?: () => void;
+  handleInputChange: (field: string, value: string) => void;
+  email: string;
+  companyname: string;
+  password: string;
+  confirmPassword: string;
+};
 
-const UserInfo = ({ navigation, route }: any) => {
+const UserInfo = ({
+  navigation,
+  handleSSOWithGoogle,
+  handleInputChange,
+  email,
+  companyname,
+  password,
+  confirmPassword,
+}: Props) => {
   const { t, i18n } = useTranslation();
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [isInvalidEmail, setIsInvalidEmail] = useState<boolean>(false);
+  const [isInvalidcompanyname, setIsInvalidCCompanyName] = useState<boolean>(false);
+  const [isUserDuplicated, setIsUserDuplicated] = useState<boolean>(false);
+  const [isPasswordWeak, setIsPasswordWeak] = useState<boolean>(false);
+  const [isNotPasswordMatching, setIsNotPasswordMatching] =
+    useState<boolean>(false);
+
   const [phoneNumber, setPhoneNumber] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [birthDate, setBirthDate] = useState('');
@@ -41,24 +75,16 @@ const UserInfo = ({ navigation, route }: any) => {
   const [callingCode, setCallingCode] = useState('+81');
   const [showCountryPicker, setShowCountryPicker] = useState(false);
 
-  const handleCountrySelect = (country) => {
-    setCountryCode(country.cca2);
-    setCallingCode(`+${country.callingCode[0]}`);
-    setShowCountryPicker(false);
-  };
+  const handleEmailChange = (text: string) => {
+    handleInputChange('email', text);
+    setIsInvalidEmail(false);
 
-  // Handle date change
-  const onChange = (event, date) => {
-    setShowPicker(Platform.OS === 'ios');
-    if (date) {
-      setSelectedDate(date);
-      setBirthDate(date.toISOString().split('T')[0]); // Format date as YYYY-MM-DD
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(text)) {
+      setIsInvalidEmail(true);
+      return;
     }
-  };
-
-  // Show date picker
-  const showDatePicker = () => {
-    setShowPicker(true);
   };
 
   // Function to handle image selection
@@ -101,80 +127,18 @@ const UserInfo = ({ navigation, route }: any) => {
         </View>
 
         <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.fullname')}
-            value={username}
-            onChangeText={setUsername}
+          <FullNameInputField />
+          <MailInputField
+            email={email}
+            onChange={handleEmailChange}
+            isInvalid={isInvalidEmail}
           />
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.email')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-          />
-          <View style={styles.phoneInputContainer}>
-            <CountryPicker
-              withCallingCode
-              withFilter
-              withFlag
-              countryCode={countryCode}
-              onSelect={handleCountrySelect}
-              visible={showCountryPicker}
-              onClose={() => setShowCountryPicker(false)}
-            />
-            <TextInput
-              style={styles.countryCodeInput}
-              value={callingCode}
-              editable={false} // Prevent user from editing the country code manually
-            />
-            <TextInput
-              style={styles.phoneNumberInput}
-              placeholder={t('person.phone')}
-              value={phoneNumber}
-              onChangeText={setPhoneNumber}
-              keyboardType="phone-pad"
-            />
-          </View>
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.company')}
-            value={companyName}
-            onChangeText={setCompanyName}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.birthdate')}
-            value={birthDate}
-            onFocus={showDatePicker} // Show date picker when input is focused
-          />
-
-          {showPicker && (
-            <DateTimePicker
-              value={selectedDate}
-              mode="date"
-              display="default"
-              onChange={onChange}
-            />
-          )}
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.credit')}
-            value={cost}
-            onChangeText={setCost}
-            editable={false}
-            selectTextOnFocus={false}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.createdate')}
-            value={createdate}
-            onChangeText={setCreateDate}
-            editable={false}
-            selectTextOnFocus={false}
-          />
-
+          
+          <CompanyInputField />
+          <BirthdateInputField />
+          <PhoneNumberInputField />
+          <UserPaymentField />
+          <UserCreatedDateField />
           <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
             <Text style={styles.updateButtonText}>{t('update')}</Text>
           </TouchableOpacity>        

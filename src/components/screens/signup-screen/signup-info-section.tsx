@@ -38,7 +38,7 @@ const SignupOptionAndInfoSection = ({
   const [isPasswordWeak, setIsPasswordWeak] = useState<boolean>(false);
   const [isNotPasswordMatching, setIsNotPasswordMatching] =
     useState<boolean>(false);
-    const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleEmailChange = (text: string) => {
     handleInputChange('email', text);
@@ -133,13 +133,13 @@ const SignupOptionAndInfoSection = ({
         )}
         {isInvalidEmail && (
           <View style={styles.warnningMessageContainer}>
-            <Icon name="error-outline" size={18} color={'#FF0000'} />
+            <Icon name="error-outline" size={20} color={'#FF0000'} />
             <Text style={styles.errorText}>{t('signinfo.invalidemail')}</Text>
           </View>
         )}
         {isPasswordWeak && (
           <View style={styles.warnningMessageContainer}>
-            <Icon name="error-outline" size={18} color={'#FF0000'} />
+            <Icon name="error-outline" size={20} color={'#FF0000'} />
             <Text style={styles.errorText}>
               {t('signinfo.pwdstrong')}
             </Text>
@@ -147,7 +147,7 @@ const SignupOptionAndInfoSection = ({
         )}
         {isNotPasswordMatching && (
           <View style={styles.warnningMessageContainer}>
-            <Icon name="error-outline" size={18} color={'#FF0000'} />
+            <Icon name="error-outline" size={20} color={'#FF0000'} />
             <Text style={styles.errorText}>{t('signinfo.pwdunmatch')}</Text>
           </View>
         )}
