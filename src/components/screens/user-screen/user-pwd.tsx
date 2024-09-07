@@ -14,61 +14,88 @@ import AsyncStorage from '@react-native-async-storage/async-storage';import {
 import Header from '../../../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
 
-const defaultprofileImage = require('../../../assets/images/avatar.png')
 const passwordImage = require('../../../assets/images/circum_unlock.png')
-const previousButton = require('../../../assets/images/ep_back.png')
 
+import Icon from 'react-native-vector-icons/Octicons';
+import MailInputField from 'components/common/login-signup/mail-input-filed';
+import PasswordInputField from 'components/common/login-signup/password-input-field';
+import PasswordConfrimInputField from 'components/common/login-signup/password-confirm-input-field';
 
-const UserPassword = ({ navigation, route }: any) => {
+type Props = {
+  navigation?: any;
+  handleSSOWithGoogle?: () => void;
+  handleInputChange: (field: string, value: string) => void;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+const UserPassword = ({ navigation, route, password, confirmPassword, handleInputChange}: any) => {
   const { t, i18n } = useTranslation();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [isInvalidEmail, setIsInvalidEmail] = useState<boolean>(false);
+  const [isPasswordWeak, setIsPasswordWeak] = useState<boolean>(false);
+  const [isNotPasswordMatching, setIsNotPasswordMatching] =
+    useState<boolean>(false);
 
   const handleUpdate = () => {
 
   }
-  
+  const handlePasswordChange = (text: string) => {
+    handleInputChange('password', text);
+    setIsPasswordWeak(false);
+
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+    if (!passwordRegex.test(text)) {
+      setIsPasswordWeak(true);
+      return;
+    }
+  };
+
+  const handlePasswordConfirmChange = (text: string) => {
+    handleInputChange('confirmPassword', text);
+    setIsNotPasswordMatching(false);
+
+    if (password !== text) {
+      setIsNotPasswordMatching(true);
+      return;
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Header title={t('pwd.pwd')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Image source={passwordImage} style={styles.passwordImage}></Image>
+        <Icon name="key" size={50} color={'#9D9D9D'} style={styles.icon} />
         <View style={styles.content}>
           <Text style={styles.label}>{t('person.email')}</Text>
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.email')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
+          <MailInputField
+            email={email}
+            // onChange={handleEmailChange}
+            isInvalid={isInvalidEmail}
           />
 
           <Text style={styles.label}>{t('pwd.currentpwd')}</Text>
-          <TextInput
-            style={styles.input}
-            placeholder={t('pwd.currentpwd')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="visible-password"
+          <PasswordInputField
+            password={password}
+            onChange={handlePasswordChange}
+            isInvalid={isPasswordWeak}
           />
-
           <Text style={styles.label}>{t('pwd.newpwd')}</Text>
-          <TextInput
-            style={styles.input}
-            placeholder={t('pwd.newpwd')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="visible-password"
+          <PasswordInputField
+            password={password}
+            onChange={handlePasswordChange}
+            isInvalid={isPasswordWeak}
           />
 
           <Text style={styles.label}>{t('pwd.confirmpwd')}</Text>
-          <TextInput
-            style={styles.input}
-            placeholder={t('pwd.confirmpwd')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="visible-password"
+          <PasswordConfrimInputField
+            confirmPassword={confirmPassword}
+            onChange={handlePasswordConfirmChange}
+            isInvalid={isNotPasswordMatching}
           />
           <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
             <Text style={styles.updateButtonText}>{t('pwd.changepwd')}</Text>
@@ -92,8 +119,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
   passwordImage: {
+  },
+  icon: {
+    transform: [{scaleX: -1}, {rotate: '45deg'}],
     marginTop: 30,
-    marginBottom: 30,
+    // marginBottom: 30,
     width: 100,
     height: 100,
   },
@@ -150,7 +180,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 40,
   },
   updateButtonText: {
     color: '#ffffff',

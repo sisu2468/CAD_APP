@@ -54,13 +54,15 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     gap: 8,
-    borderBottomWidth: 1,
+    marginBottom: 20,
   },
   input: {
     flex: 1,
     height: 40,
     paddingVertical: 8,
     fontWeight: 'medium',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5E5',
     fontSize: 14,
   },
   icon: {

@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     gap: 8,
-    borderBottomWidth: 1,
   },
   input: {
     flex: 1,
@@ -67,6 +66,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     fontWeight: 'medium',
     fontSize: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5E5',
   },
 });
 

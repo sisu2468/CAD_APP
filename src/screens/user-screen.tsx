@@ -12,7 +12,7 @@ import Footer from '../components/common/Theme/footer';
 import Header from '../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon1 from 'react-native-vector-icons/MaterialIcons';
+import Icon1 from 'react-native-vector-icons/Octicons';
 
 const { width } = Dimensions.get('window');
 const previousButton = require('../assets/images/ep_back.png')
@@ -53,7 +53,7 @@ const UserScreen = ({ navigation }: any) => {
         <Text style={styles.buttonText}>{t('user.payinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPassword}>
-          <Image source={userpwd} style={styles.logoImage}></Image>
+          <Icon1 name="key" size={22} color={'#9D9D9D'} style={styles.icon} />
           <Text style={styles.buttonText}>{t('user.pwd')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditDesign}>
@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
+  icon: {
+    transform: [{scaleX: -1}, {rotate: '45deg'}],
+  },
   content: {
     marginTop: 30,
     marginBottom: 30,
@@ -88,27 +91,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderBottomColor: '#292929',
     borderBottomWidth: 0.5,
-  },
-  previousstyle: {
-    flexDirection: 'row', // Aligns the image and text horizontally
-    alignItems: 'center', // Centers the image and text vertically
-    justifyContent: 'center', // Centers content horizontally
-  },
-  headertextContainer: {
-    flex: 1, // Takes up remaining space after the image
-    justifyContent: 'center', // Centers text vertically within this container
-  },
-  headertext: {
-    textAlign: 'center',
-    fontSize: 17,
-    color: '#000000',
-    fontWeight: '700',
-    paddingBottom: 10,
-  },
-  previousButton: {
-    width: 25,
-    height: 25,
-    marginBottom: 10,
   },
   footer: {
     width: '100%',
