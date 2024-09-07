@@ -41,6 +41,13 @@
       "currentcredit": "Current Credit",
       "credit": "Credit",
       "buycredit": "Buy Credits"
+    },
+    "pwd": {
+      "pwd": "PASSWORD MANAGEMENT",
+      "currentpwd": "Current Password",
+      "newpwd": "New Password",
+      "confirmpwd": "Confirm Password",
+      "changepwd": "Change Password"
     }
   }
   

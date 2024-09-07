@@ -42,6 +42,13 @@
       "currentcredit": "現在のクレジット",
       "credit": "クレジット",
       "buycredit": "クレジットを購入する"
+    },
+    "pwd": {
+      "pwd": "パスワード管理",
+      "currentpwd": "現在のパスワード",
+      "newpwd": "新しいパスワード",
+      "confirmpwd": "パスワードを認証する",
+      "changepwd": "パスワードを変更する"
     }
   }
   

@@ -11,9 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';import {
   Image,
   Platform,
 } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import CountryPicker from 'react-native-country-picker-modal';
+import Header from '../../../components/common/Theme/header';
+import { useTranslation } from 'react-i18next';
 
 const defaultprofileImage = require('../../../assets/images/avatar.png')
 const passwordImage = require('../../../assets/images/circum_unlock.png')
@@ -21,6 +20,8 @@ const previousButton = require('../../../assets/images/ep_back.png')
 
 
 const UserPassword = ({ navigation, route }: any) => {
+  const { t, i18n } = useTranslation();
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
@@ -30,54 +31,47 @@ const UserPassword = ({ navigation, route }: any) => {
   
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.status}>
-        <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
-          <Image source={previousButton} style={styles.previousButton} />
-          <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>Password</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <Header title={t('pwd.pwd')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Image source={passwordImage} style={styles.passwordImage}></Image>
         <View style={styles.content}>
-          <Text style={styles.label}>Email Address</Text>
+          <Text style={styles.label}>{t('person.email')}</Text>
           <TextInput
             style={styles.input}
-            placeholder='Email Address'
+            placeholder={t('person.email')}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
 
-          <Text style={styles.label}>Current Password</Text>
+          <Text style={styles.label}>{t('pwd.currentpwd')}</Text>
           <TextInput
             style={styles.input}
-            placeholder='Current Password'
+            placeholder={t('pwd.currentpwd')}
             value={email}
             onChangeText={setEmail}
             keyboardType="visible-password"
           />
 
-          <Text style={styles.label}>New Password</Text>
+          <Text style={styles.label}>{t('pwd.newpwd')}</Text>
           <TextInput
             style={styles.input}
-            placeholder='New Password'
+            placeholder={t('pwd.newpwd')}
             value={email}
             onChangeText={setEmail}
             keyboardType="visible-password"
           />
 
-          <Text style={styles.label}>Confirm Password</Text>
+          <Text style={styles.label}>{t('pwd.confirmpwd')}</Text>
           <TextInput
             style={styles.input}
-            placeholder='Confirm Password'
+            placeholder={t('pwd.confirmpwd')}
             value={email}
             onChangeText={setEmail}
             keyboardType="visible-password"
           />
           <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-            <Text style={styles.updateButtonText}>Change Password</Text>
+            <Text style={styles.updateButtonText}>{t('pwd.changepwd')}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
