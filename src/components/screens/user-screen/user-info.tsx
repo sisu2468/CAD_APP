@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   headertext: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 17,
     color: '#000000',
     fontWeight: '700',
     paddingBottom: 10,
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   },
   uploadText: {
     color: '#ffffff',
-    fontSize: 18,
+    fontSize: 17,
     marginBottom: 20,
     fontWeight: '800',
   },
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: '100%',
     color: '#000000',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '500',
     borderBlockColor: '#ffffff',
   },

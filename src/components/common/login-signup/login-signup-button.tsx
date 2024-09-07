@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   signInButtonText: {
     padding: 0,
     color: '#fff',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
   },
 });

@@ -12,6 +12,7 @@ import Footer from '../components/common/Theme/footer';
 import Header from '../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon1 from 'react-native-vector-icons/MaterialIcons';
 
 const { width } = Dimensions.get('window');
 const previousButton = require('../assets/images/ep_back.png')
@@ -60,7 +61,7 @@ const UserScreen = ({ navigation }: any) => {
           <Text style={styles.buttonText}>{t('user.design')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleSignOut}>
-          <Image source={userlogout} style={styles.logoImage}></Image>
+          <Icon name="sign-out" size={30} color={'#9D9D9D'} />
           <Text style={styles.buttonText}>{t('logout')}</Text>
         </TouchableOpacity>
       </View>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   },
   headertext: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 17,
     color: '#000000',
     fontWeight: '700',
     paddingBottom: 10,
@@ -130,6 +131,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: 25, // Adjust as needed
     height: 25, // Adjust as needed
+    color: '#9D9D9D',
     // marginRight: 10, // Space between image and text
   },
   buttonText: {

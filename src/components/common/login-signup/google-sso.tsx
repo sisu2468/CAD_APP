@@ -19,7 +19,7 @@ const SSOWithGoogle = ({label, onClick}: Props) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 36,
+    height: 40,
     borderWidth: 1,
     borderRadius: 6,
     borderColor: '#E5E5E5',

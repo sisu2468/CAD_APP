@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 34,
+    height: 40,
     paddingVertical: 8,
     fontWeight: 'medium',
     fontSize: 14,

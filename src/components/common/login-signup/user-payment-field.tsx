@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 34,
+    height: 40,
     paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
     fontWeight: 'medium',
-    fontSize: 18,
+    fontSize: 17,
   },
 });
 

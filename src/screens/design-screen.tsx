@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#001a00',
-    fontSize: 18,
+    fontSize: 17,
     textAlign: 'center',
   },
   imageContainer: {

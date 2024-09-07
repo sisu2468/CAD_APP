@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   paymentText: {
     color: '#000',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
   },
   confirmation: {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   confirmationText: {
     color: '#03f8ff',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
   },
   footer: {

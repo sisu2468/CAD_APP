@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet, View } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
 
 const FullNameInputField = () => {
@@ -9,7 +9,7 @@ const FullNameInputField = () => {
 
   return (
     <View style={styles.container}>
-      <Icon name="calendar" size={22} color={'#9D9D9D'} />
+      <Icon name="calendar-outline" size={22} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
         placeholder={t('person.createdate')}
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 34,
+    height: 40,
     paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
     fontWeight: 'medium',
-    fontSize: 18,
+    fontSize: 17,
   },
 });
 

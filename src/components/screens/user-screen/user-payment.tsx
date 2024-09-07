@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   headertext: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 17,
     color: '#000000',
     fontWeight: '700',
     paddingBottom: 10,
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   label: {
     alignSelf: 'flex-start',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '500',
     color: '#000',
     marginBottom: 5,
