@@ -36,6 +36,12 @@
       "birthdate": "生年月日",
       "credit": "クレジット",
       "createdate": "作成日"
+    },
+    "payinfo": {
+      "payment": "お支払い情報",
+      "currentcredit": "現在のクレジット",
+      "credit": "クレジット",
+      "buycredit": "クレジットを購入する"
     }
   }
   

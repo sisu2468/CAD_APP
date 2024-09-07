@@ -35,6 +35,12 @@
       "birthdate": "Birthdate",
       "credit": "Credit",
       "createdate": "Created Date"
+    },
+    "payinfo": {
+      "payment": "Payment Information",
+      "currentcredit": "Current Credit",
+      "credit": "Credit",
+      "buycredit": "Buy Credits"
     }
   }
   

@@ -11,11 +11,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';import {
   Image,
   Platform,
 } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import CountryPicker from 'react-native-country-picker-modal';
+import Header from '../../../components/common/Theme/header';
+import { useTranslation } from 'react-i18next';
 
-const passwordImage = require('../../../assets/images/circum_unlock.png')
 const previousButton = require('../../../assets/images/ep_back.png')
 const usercost = require('../../../assets/images/yen_logo.png')
 
@@ -26,40 +24,34 @@ const UserPayment = ({ navigation, route }: any) => {
   const handlepayment = () => {
     navigation.navigate('Payment');
   }
-  
+  const { t, i18n } = useTranslation();
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.status}>
-        <TouchableOpacity style={styles.previousstyle} onPress={() => navigation.goBack()}>
-          <Image source={previousButton} style={styles.previousButton} />
-          <View style={styles.headertextContainer}>
-            <Text style={styles.headertext}>Payment Management</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <Header title={t('payinfo.payment')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Image source={usercost} style={styles.passwordImage}></Image>
         <View style={styles.content}>
-          <Text style={styles.label}>Email Address</Text>
+          <Text style={styles.label}>{t('person.email')}</Text>
           <TextInput
             style={styles.input}
-            placeholder='Email Address'
+            placeholder={t('person.email')}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
 
-          <Text style={styles.label}>Current Credit</Text>
+          <Text style={styles.label}>{t('payinfo.currentcredit')}</Text>
           <TextInput
             style={styles.input}
-            placeholder="Payment"
+            placeholder={t('payinfo.credit')}
             value={cost}
             onChangeText={setCost}
             editable={false}
             selectTextOnFocus={false}
           />
           <TouchableOpacity style={styles.updateButton} onPress={handlepayment}>
-            <Text style={styles.updateButtonText}>Buy the Credit</Text>
+            <Text style={styles.updateButtonText}>{t('payinfo.buycredit')}</Text>
           </TouchableOpacity>    
         </View>
       </ScrollView>
