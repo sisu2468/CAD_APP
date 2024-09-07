@@ -17,7 +17,7 @@ const MailInputField = ({email, onChange, isInvalid = false}: Props) => {
         styles.container,
         {borderColor: isInvalid ? '#FF0000' : '#E5E5E5'},
       ]}>
-      <Icon name="mail" size={20} color={'#9D9D9D'} />
+      <Icon name="mail" size={22} color={'#9D9D9D'} />
       <TextInput
         value={email}
         onChangeText={value => {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
     fontWeight: 'medium',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 

@@ -133,13 +133,13 @@ const SignupOptionAndInfoSection = ({
         )}
         {isInvalidEmail && (
           <View style={styles.warnningMessageContainer}>
-            <Icon name="error-outline" size={20} color={'#FF0000'} />
+            <Icon name="error-outline" size={22} color={'#FF0000'} />
             <Text style={styles.errorText}>{t('signinfo.invalidemail')}</Text>
           </View>
         )}
         {isPasswordWeak && (
           <View style={styles.warnningMessageContainer}>
-            <Icon name="error-outline" size={20} color={'#FF0000'} />
+            <Icon name="error-outline" size={22} color={'#FF0000'} />
             <Text style={styles.errorText}>
               {t('signinfo.pwdstrong')}
             </Text>
@@ -147,7 +147,7 @@ const SignupOptionAndInfoSection = ({
         )}
         {isNotPasswordMatching && (
           <View style={styles.warnningMessageContainer}>
-            <Icon name="error-outline" size={20} color={'#FF0000'} />
+            <Icon name="error-outline" size={22} color={'#FF0000'} />
             <Text style={styles.errorText}>{t('signinfo.pwdunmatch')}</Text>
           </View>
         )}

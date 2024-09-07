@@ -13,13 +13,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';import {
 } from 'react-native';
 import Header from '../../../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
+import Icon from 'react-native-vector-icons/Feather';
+import MailInputField from 'components/common/login-signup/mail-input-filed';
+import UserPaymentField from 'components/common/login-signup/user-payment-field';
 
 const previousButton = require('../../../assets/images/ep_back.png')
 const usercost = require('../../../assets/images/yen_logo.png')
 
-const UserPayment = ({ navigation, route }: any) => {
+const UserPayment = ({ navigation, route, email }: any) => {
   const [cost, setCost] = useState('');
-  const [email, setEmail] = useState('');
 
   const handlepayment = () => {
     navigation.navigate('Payment');
@@ -30,26 +32,17 @@ const UserPayment = ({ navigation, route }: any) => {
     <SafeAreaView style={styles.container}>
       <Header title={t('payinfo.payment')}  navigation={navigation} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Image source={usercost} style={styles.passwordImage}></Image>
+        {/* <Image source={usercost} style={styles.passwordImage}></Image> */}
+        <Icon name="credit-card" size={100} color={'#9D9D9D'} style={styles.passwordImage} />
+
         <View style={styles.content}>
           <Text style={styles.label}>{t('person.email')}</Text>
-          <TextInput
-            style={styles.input}
-            placeholder={t('person.email')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
+          <MailInputField
+            email={email}
           />
 
           <Text style={styles.label}>{t('payinfo.currentcredit')}</Text>
-          <TextInput
-            style={styles.input}
-            placeholder={t('payinfo.credit')}
-            value={cost}
-            onChangeText={setCost}
-            editable={false}
-            selectTextOnFocus={false}
-          />
+          <UserPaymentField />
           <TouchableOpacity style={styles.updateButton} onPress={handlepayment}>
             <Text style={styles.updateButtonText}>{t('payinfo.buycredit')}</Text>
           </TouchableOpacity>    
@@ -109,7 +102,7 @@ const styles = StyleSheet.create({
   },
   label: {
     alignSelf: 'flex-start',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '500',
     color: '#000',
     marginBottom: 5,

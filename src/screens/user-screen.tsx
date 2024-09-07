@@ -11,6 +11,7 @@ import {
 import Footer from '../components/common/Theme/footer';
 import Header from '../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const { width } = Dimensions.get('window');
 const previousButton = require('../assets/images/ep_back.png')
@@ -47,8 +48,8 @@ const UserScreen = ({ navigation }: any) => {
           <Text style={styles.buttonText}>{t('userinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPayment}>
-          <Image source={usercost} style={styles.logoImage}></Image>
-          <Text style={styles.buttonText}>{t('user.payinfo')}</Text>
+        <Icon name="credit-card" size={20} color={'#9D9D9D'} />
+        <Text style={styles.buttonText}>{t('user.payinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPassword}>
           <Image source={userpwd} style={styles.logoImage}></Image>

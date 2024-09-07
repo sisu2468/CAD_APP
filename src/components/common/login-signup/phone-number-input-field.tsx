@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
     fontWeight: 'medium',
-    fontSize: 16,
+    fontSize: 18,
   },
   countrycode: {
     height: 34,

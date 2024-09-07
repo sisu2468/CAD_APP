@@ -26,7 +26,7 @@ const BirthDateInputField = () => {
 
   return (
     <View style={styles.container}>
-      <Icon name="calendar" size={20} color={'#9D9D9D'} />
+      <Icon name="calendar" size={22} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
         placeholder={t('person.birthdate')}
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
     fontWeight: 'medium',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 

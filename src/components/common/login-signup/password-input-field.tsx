@@ -24,7 +24,7 @@ const PasswordInputField = ({password, onChange, isInvalid = false}: Props) => {
         styles.container,
         {borderColor: isInvalid ? '#FF0000' : '#E5E5E5'},
       ]}>
-      <Icon name="key" size={20} color={'#9D9D9D'} style={styles.icon} />
+      <Icon name="key" size={22} color={'#9D9D9D'} style={styles.icon} />
       <TextInput
         value={password}
         onChangeText={value => {
@@ -38,9 +38,9 @@ const PasswordInputField = ({password, onChange, isInvalid = false}: Props) => {
       />
       <TouchableOpacity onPress={onPress}>
         {isHide ? (
-          <Icon name="eye" size={20} color={'#9D9D9D'} />
+          <Icon name="eye" size={22} color={'#9D9D9D'} />
         ) : (
-          <Icon name="eye-closed" size={20} color={'#9D9D9D'} />
+          <Icon name="eye-closed" size={22} color={'#9D9D9D'} />
         )}
       </TouchableOpacity>
     </View>
