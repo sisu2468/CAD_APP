@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { SelectList } from 'react-native-dropdown-select-list'
 
 import Footer from '../../../components/common/Theme/footer';
 import Header from '../../../components/common/Theme/header';
@@ -21,16 +22,25 @@ import { useTranslation } from 'react-i18next';
 const AdminFeedback = ({navigation, route}: any) => {
   const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
-  const [feedbackTitle, setFeedbackTitle] = useState('');
-  const [feedbackContent, setFeedbackContent] = useState('');
+  const [feedbackTitle, setFeedbackTitle] = useState('Feedback1');
+  const [feedbackContent, setFeedbackContent] = useState('ホーム画面のスタイル改善');
+  const [feedbackcategory, setFeedbackCategory] = useState('Bug');
   const [feedbackStatus, setFeedbackStatus] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [username, setUserName] = useState('user1');
+  const [selected, setSelected] = React.useState('Open');
+
+  const statusdata = [
+      {key:'1', value:'Open'},
+      {key:'2', value:'In Progress'},
+      {key:'3', value:'Completed'}
+  ]
 
   // Sample data for the table
   const data = [
-    { no: 1, title: 'Feedback 1', category: 'Bug', status: 'Open' },
-    { no: 2, title: 'Feedback 2', category: 'Feature Request', status: 'Closed' },
-    { no: 3, title: 'Feedback 3', category: 'Bug', status: 'In Progress' },
+    { no: 1, title: 'Feedback 1', user: 'user1', category: 'Bug', status: 'Open' },
+    { no: 2, title: 'Feedback 2', user: 'user2', category: 'Feature Request', status: 'Closed' },
+    { no: 3, title: 'Feedback 3', user: 'user3', category: 'Bug', status: 'In Progress' },
     // Add more rows as needed
   ];
 
@@ -42,13 +52,15 @@ const AdminFeedback = ({navigation, route}: any) => {
   ];
 
   // Function to handle form submission
-  const handleSubmitFeedback = () => {
+  const handleupdateUser = () => {
     // Implement your form submission logic here
-    console.log('Feedback Submitted:', {
-      title: feedbackTitle,
-      category: feedbackContent,
-      status: feedbackStatus,
-    });
+    console.log('Update');
+    // Close the modal after submission
+    setModalVisible(false);
+  };
+  const handleDeleteUser = () => {
+    // Implement your form submission logic here
+    console.log('Delete');
     // Close the modal after submission
     setModalVisible(false);
   };
@@ -69,18 +81,13 @@ const AdminFeedback = ({navigation, route}: any) => {
             clearButtonMode="always"
           />
         </View>
-        <TouchableOpacity
-          style={styles.plusIcon}
-          onPress={() => setModalVisible(true)}
-        >
-          <Icon name="add" size={30} color="#000" />
-        </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.table}>
           {/* Table Header */}
           <View style={styles.tableHeader}>
             <Text style={styles.headerText}>{t("feedback.no")}</Text>
+            <Text style={styles.headerText}>{t("feedback.username")}</Text>
             <Text style={styles.headerText}>{t("feedback.title")}</Text>
             <Text style={styles.headerText}>{t("feedback.category")}</Text>
             <Text style={styles.headerText}>{t("feedback.status")}</Text>
@@ -88,12 +95,15 @@ const AdminFeedback = ({navigation, route}: any) => {
 
           {/* Table Rows */}
           {data.map((item, index) => (
-            <View key={index} style={styles.tableRow}>
-              <Text style={styles.cell}>{item.no}</Text>
-              <Text style={styles.cell}>{item.title}</Text>
-              <Text style={styles.cell}>{item.category}</Text>
-              <Text style={styles.cell}>{item.status}</Text>
-            </View>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+                <View key={index} style={styles.tableRow}>
+                <Text style={styles.cell}>{item.no}</Text>
+                <Text style={styles.cell}>{item.user}</Text>
+                <Text style={styles.cell}>{item.title}</Text>
+                <Text style={styles.cell}>{item.category}</Text>
+                <Text style={styles.cell}>{item.status}</Text>
+                </View>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
@@ -116,19 +126,37 @@ const AdminFeedback = ({navigation, route}: any) => {
             />
             <TextInput
               style={styles.modalinput}
+              placeholder={t('feedback.username')}
+              value={username}
+              onChangeText={setUserName}
+            />
+            <TextInput
+              style={styles.modalinput}
               placeholder={t('feedback.category')}
-              value={feedbackContent}
-              onChangeText={setFeedbackContent}
+              value={feedbackcategory}
+              onChangeText={setFeedbackCategory}
             />
             <TextInput
               style={[styles.modalinput, styles.multiLineInput]}
               placeholder={t('feedback.content')}
-              value={feedbackStatus}
-              onChangeText={setFeedbackStatus}
+              value={feedbackContent}
+              onChangeText={setFeedbackContent}
+            />
+            <SelectList 
+                setSelected={(val) => setFeedbackStatus(val)} 
+                data={statusdata} 
+                save="value"
+                defaultOption={{key: '1', value: 'Open'}}
+                boxStyles={styles.status}
+                dropdownStyles={styles.dropdown}
+                placeholder={t('feedback.status')} // Placeholder for status
             />
             <View style={styles.button}>
-              <Button title={t('feedback.submit')} onPress={handleSubmitFeedback} />
-              <Button title={t('feedback.cancel')} onPress={() => setModalVisible(false)} />
+              <Button title={t('admin.users.update')} onPress={handleupdateUser} />
+              <TouchableOpacity style={styles.deletebutton} onPress={handleDeleteUser}>
+                <Text style={styles.buttonText}>{t('admin.users.delete')}</Text>
+              </TouchableOpacity>
+              <Button title={t('admin.users.cancel')} onPress={() => setModalVisible(false)} />
             </View>
           </View>
         </View>
@@ -211,6 +239,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'center',
+    marginTop: 20,
     gap: 20
   },
   plusIcon: {
@@ -242,6 +271,13 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
   },
+  status: {
+    marginBottom: 10, // Style for dropdown
+    marginLeft: 10
+  },
+  dropdown: {
+    marginLeft: 10
+  },
   multiLineInput: {
     height: 200,
     textAlignVertical: 'top',
@@ -258,29 +294,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-});
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    color: '#000',
-    fontSize: 16,
-    backgroundColor: '#fff',
+  deletebutton: {
+    backgroundColor: "red",
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 3,
   },
-  inputAndroid: {
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    color: '#000',
-    fontSize: 16,
-    backgroundColor: '#fff',
-  },
+  buttonText: {
+    color: "#000000",
+    fontWeight: '500'
+  }
 });
 
 export default AdminFeedback;
