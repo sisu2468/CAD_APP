@@ -75,6 +75,12 @@
       "content": "コンテンツ",
       "submit": "送信",
       "cancel": "キャンセル"
+    },
+    "admin": {
+      "admin": "管理者",
+      "userinfo": "ユーザー管理",
+      "feedback": "フィードバック管理",
+      "payment": "支払い管理"
     }
   }
   

@@ -1,118 +1,63 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
   Text,
   SafeAreaView,
-  ScrollView,
-  Modal,
-  TextInput,
   TouchableOpacity,
+  Dimensions,
   Image,
-  Button,
 } from 'react-native';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import Footer from '../components/common/Theme/footer';
 import Header from '../components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons'; // Or any other library
 
-const FeedbackScreen = ({navigation, route}: any) => {
-  const { t } = useTranslation();
-  const [modalVisible, setModalVisible] = useState(false);
-  const [feedbackTitle, setFeedbackTitle] = useState('');
-  const [feedbackContent, setFeedbackContent] = useState('');
-  const [feedbackStatus, setFeedbackStatus] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+const { width } = Dimensions.get('window');
+const previousButton = require('../assets/images/ep_back.png')
+const userinfo = require('../assets/images/ph_user-thin.png')
+const userpwd = require('../assets/images/circum_unlock.png')
+const usercost = require('../assets/images/yen_logo.png')
+const userlogout = require('../assets/images/user_logout.png')
+const design = require('assets/images/design_services_24dp.png');
 
-  // Sample data for the table
-  const data = [
-    { no: 1, title: 'Feedback 1', category: 'Bug', status: 'Open' },
-    { no: 2, title: 'Feedback 2', category: 'Feature Request', status: 'Closed' },
-    { no: 3, title: 'Feedback 3', category: 'Bug', status: 'In Progress' },
-    // Add more rows as needed
-  ];
+const UserScreen = ({ navigation }: any) => {
+  const { t, i18n } = useTranslation();
 
-  const categories = [
-    { label: 'Bug Report', value: 'bug_report' },
-    { label: 'Feature Request', value: 'feature_request' },
-    { label: 'General Feedback', value: 'general_feedback' },
-    // Add more categories here
-  ];
-
-  // Function to handle form submission
-  const handleSubmitFeedback = () => {
-    // Implement your form submission logic here
-    console.log('Feedback Submitted:', {
-      title: feedbackTitle,
-      category: feedbackContent,
-      status: feedbackStatus,
-    });
-    // Close the modal after submission
-    setModalVisible(false);
+  const handleEditProfile = () => {
+    navigation.navigate('Admin-Users')
   };
-
+  const handleEditPayment = () => {
+    navigation.navigate('Admin-Pay')
+  };
+  const handleEditFeedback = () => {
+    navigation.navigate('Admin-Feedback')
+  };
+  const handleSignOut = () => {
+    navigation.navigate('Signin', {isSignout: true});
+  };
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={t('admin.admin')} navigation={navigation} />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.table}>
-          {/* Table Header */}
-          <View style={styles.tableHeader}>
-            <Text style={styles.headerText}>{t("feedback.no")}</Text>
-            <Text style={styles.headerText}>{t("feedback.title")}</Text>
-            <Text style={styles.headerText}>{t("feedback.category")}</Text>
-            <Text style={styles.headerText}>{t("feedback.status")}</Text>
-          </View>
-
-          {/* Table Rows */}
-          {data.map((item, index) => (
-            <View key={index} style={styles.tableRow}>
-              <Text style={styles.cell}>{item.no}</Text>
-              <Text style={styles.cell}>{item.title}</Text>
-              <Text style={styles.cell}>{item.category}</Text>
-              <Text style={styles.cell}>{item.status}</Text>
-            </View>
-          ))}
-        </View>
-      </ScrollView>
-      {/* Feedback Submission Modal */}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>{t('feedback.submitFeedback')}</Text>
-            
-            <TextInput
-              style={styles.modalinput}
-              placeholder={t('feedback.title')}
-              value={feedbackTitle}
-              onChangeText={setFeedbackTitle}
-            />
-            <TextInput
-              style={styles.modalinput}
-              placeholder={t('feedback.category')}
-              value={feedbackContent}
-              onChangeText={setFeedbackContent}
-            />
-            <TextInput
-              style={[styles.modalinput, styles.multiLineInput]}
-              placeholder={t('feedback.content')}
-              value={feedbackStatus}
-              onChangeText={setFeedbackStatus}
-            />
-            <View style={styles.button}>
-              <Button title={t('feedback.submit')} onPress={handleSubmitFeedback} />
-              <Button title={t('feedback.cancel')} onPress={() => setModalVisible(false)} />
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <Header title={t('admin.admin')}  navigation={navigation} />
+      <View style={styles.content}>
+        <TouchableOpacity style={styles.button} onPress={handleEditProfile}>
+          <Image source={userinfo} style={styles.logoImage}></Image>
+          <Text style={styles.buttonText}>{t('admin.userinfo')}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleEditFeedback}>
+          <Icon2 name="square-edit-outline" size={20} color="#404040" />
+          <Text style={styles.buttonText}>{t('admin.feedback')}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleEditPayment}>
+        <Icon name="credit-card" size={20} color={'#9D9D9D'} />
+        <Text style={styles.buttonText}>{t('admin.payment')}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleSignOut}>
+          <Icon name="sign-out" size={30} color={'#9D9D9D'} />
+          <Text style={styles.buttonText}>{t('logout')}</Text>
+        </TouchableOpacity>
+      </View>
       <Footer style={styles.footer} navigation={navigation} />
     </SafeAreaView>
   );
@@ -123,144 +68,54 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  scrollContent: {
-    flexGrow: 1,
-    padding: 10,
+  icon: {
+    transform: [{scaleX: -1}, {rotate: '45deg'}],
+  },
+  content: {
+    marginTop: 30,
+    marginBottom: 30,
+    flex: 1, // Takes up all the space above the footer
+    justifyContent: 'center', // Center content vertically
+    alignItems: 'center', // Center content horizontally
+    padding: 10, // Padding inside the border
+  },
+  status: {
+    marginTop: 20,
+    paddingLeft: 20,
+    borderBottomColor: '#292929',
+    borderBottomWidth: 0.5,
   },
   footer: {
-    position: 'absolute',
-    bottom: 0,
     width: '100%',
     height: 60,
-  },
-  table: {
-    width: '100%',
-    borderWidth: 1,
-    borderColor: '#cccccc',
-  },
-  tableHeader: {
-    flexDirection: 'row',
-    backgroundColor: '#f0f0f0',
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-    paddingVertical: 10,
-  },
-  headerText: {
-    flex: 1,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  tableRow: {
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-    paddingVertical: 10,
-  },
-  cell: {
-    flex: 1,
-    textAlign: 'center',
-  },
-  feedbackheader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between', // Ensure both elements are spaced out
-    width: '100%',
-    paddingHorizontal: 10, // Add some padding for alignment
-  },
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#f1f1f1',
-    borderRadius: 10,
-    padding: 10,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-  },
-  searchinput: {
-    marginLeft: 10,
-    borderColor: '#cccccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    width: 160,
+    backgroundColor: '#ffffff', // Make sure it has a background color
   },
   button: {
     flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'center',
-    gap: 20
-  },
-  plusIcon: {
-    marginLeft: 'auto', // Push the plus icon to the right
-    padding: 10,
-    borderColor: '#cccccc',
-    backgroundColor: '#f1f1f1',
-    borderWidth: 0.5,
-    borderRadius: 10,
-    width: 50,  // Set width and height for circular shape
+    width: width * 2 / 3,
     height: 50,
-    justifyContent: 'center',
-    alignItems: 'center', // Centers the add icon inside
-  },
-  icon: {
-    tintColor: '#000',
-  },  
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)', // Semi-transparent background
-  },
-  modalinput: {
-    marginLeft: 10,
-    borderColor: '#cccccc',
+    borderRadius: 30,
+    backgroundColor: '#ffffff',
     borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
-  },
-  multiLineInput: {
-    height: 200,
-    textAlignVertical: 'top',
-  },
-  modalContent: {
-    width: '80%',
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-  },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    borderColor: '#000000', // Use borderColor instead of borderBlockColor
+    alignItems: 'center', // Center items vertically
+    paddingHorizontal: 10, // Add horizontal padding for spacing
     marginBottom: 20,
-    textAlign: 'center',
+    padding: 10,
+  },
+  logoImage: {
+    width: 25, // Adjust as needed
+    height: 25, // Adjust as needed
+    color: '#9D9D9D',
+    // marginRight: 10, // Space between image and text
+  },
+  buttonText: {
+    color: '#001a00',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center', // Center text within its container
+    flex: 1, // Allow text to take up remaining space
   },
 });
 
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    color: '#000',
-    fontSize: 16,
-    backgroundColor: '#fff',
-  },
-  inputAndroid: {
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    color: '#000',
-    fontSize: 16,
-    backgroundColor: '#fff',
-  },
-});
-
-export default FeedbackScreen;
+export default UserScreen;

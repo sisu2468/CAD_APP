@@ -77,7 +77,10 @@
       "cancel": "Cancel"
     },
     "admin": {
-      "admin": "ADMIN"
+      "admin": "ADMIN",
+      "userinfo": "Users Management",
+      "feedback": "Feedback Management",
+      "payment": "Payment Management"
     }
   }
   
