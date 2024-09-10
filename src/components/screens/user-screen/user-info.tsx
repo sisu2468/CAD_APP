@@ -51,7 +51,7 @@ const UserInfo = ({
   companyname,
   password,
   confirmPassword,
-}: Props) => {
+}: any) => {
   const { t, i18n } = useTranslation();
 
   const [isInvalidEmail, setIsInvalidEmail] = useState<boolean>(false);
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   headertext: {
     textAlign: 'center',
-    fontSize: 17,
+    fontSize: 18,
     color: '#000000',
     fontWeight: '700',
     paddingBottom: 10,
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   },
   uploadText: {
     color: '#ffffff',
-    fontSize: 17,
+    fontSize: 18,
     marginBottom: 20,
     fontWeight: '800',
   },
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: '100%',
     color: '#000000',
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: '500',
     borderBlockColor: '#ffffff',
   },

@@ -15,6 +15,7 @@ import HomeScreen from 'screens/home-screen';
 import DesignScreen from 'screens/design-screen';
 import PaymentScreen from 'screens/payment-screen';
 import UserScreen from 'screens/user-screen';
+import FeedbackScreen from 'screens/feedback-screen';
 import UserInfo from 'components/screens/user-screen/user-info'
 import UserPayment from 'components/screens/user-screen/user-payment';
 import UserPassword from 'components/screens/user-screen/user-pwd';
@@ -23,6 +24,7 @@ import UserDesign from 'components/screens/user-screen/user-design';
 // Import your translations
 import en from './locales/en.json';
 import jp from './locales/jp.json';
+import { useState } from 'react';
 
 // Detect the user’s device language
 const deviceLanguage =
@@ -78,6 +80,11 @@ const App = () => {
           <Stack.Screen
             name="User"
             component={UserScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Feedback"
+            component={FeedbackScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen

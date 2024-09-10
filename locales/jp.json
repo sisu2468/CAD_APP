@@ -64,6 +64,17 @@
       "newpwd": "新しいパスワード",
       "confirmpwd": "パスワードを認証する",
       "changepwd": "パスワードを変更する"
+    },
+    "feedback": {
+      "feedback": "お客様の声",
+      "submitFeedback": "新しいフィードバックの作成",
+      "no": "番号",
+      "title": "タイトル",
+      "category": "カテゴリ",
+      "status": "スターテス",
+      "content": "コンテンツ",
+      "submit": "送信",
+      "cancel": "キャンセル"
     }
   }
   

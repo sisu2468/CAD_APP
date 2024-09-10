@@ -64,6 +64,17 @@
       "newpwd": "New Password",
       "confirmpwd": "Confirm Password",
       "changepwd": "Change Password"
+    },
+    "feedback": {
+      "feedback": "Feedback",
+      "submitFeedback": "SubmitFeedback",
+      "no": "No",
+      "title": "Title",
+      "category": "Category",
+      "status": "Status",
+      "content": "Content",
+      "submit": "Submit",
+      "cancel": "Cancel"
     }
   }
   
