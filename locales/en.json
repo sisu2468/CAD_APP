@@ -75,6 +75,9 @@
       "content": "Content",
       "submit": "Submit",
       "cancel": "Cancel"
+    },
+    "admin": {
+      "admin": "ADMIN"
     }
   }
   

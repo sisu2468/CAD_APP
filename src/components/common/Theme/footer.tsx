@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -5,6 +6,11 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon1 from 'react-native-vector-icons/FontAwesome';  // Use FontAwesome or other icon set
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons'; // Or any other library
+
+
 
 const Logo = require('assets/images/Delite_logo.png');
 const manageaccount = require('assets/images/profile.png');
@@ -14,6 +20,8 @@ const paid = require('assets/images/paid.png');
 const design = require('assets/images/design_services_24dp.png');
 
 const Footer = ({navigation, route}: any) => {
+  const [isAdmin, setIsAdmin] = useState('true');
+
     const handleSignOut = () => {
       navigation.navigate('Signin', {isSignout: true});
     };
@@ -32,23 +40,34 @@ const Footer = ({navigation, route}: any) => {
     const handleUser = () => {
       navigation.navigate('User')
     };
+    const handleAdmin = () => {
+      navigation.navigate('Admin')
+    };
     return (
       <View style={styles.footer}>
           <TouchableOpacity style={styles.newLoanButton} onPress={handleDesign}>
-            <Image source={design} style={styles.icon} />
+            {/* <Image source={design} style={styles.icon} /> */}
+            <Icon2 name="compass" size={40} color="#404040" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.newLoanButton} onPress={handlePaid}>
-            <Image source={paid} style={styles.icon} />
+            {/* <Image source={paid} style={styles.icon} /> */}
+            <Icon name="paid" size={40} color="#404040" />
           </TouchableOpacity>
           <TouchableOpacity  onPress={handleHome}>
             <Image source={Logo} style={styles.logo}/>
           </TouchableOpacity>
           <TouchableOpacity style={styles.newLoanButton} onPress={handleFeedback}>
-            <Image source={feedback} style={styles.icon} />
+            <Icon2 name="square-edit-outline" size={40} color="#404040" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.newLoanButton} onPress={handleUser}>
-            <Image source={userinfo} style={styles.icon} />
-          </TouchableOpacity>
+          {isAdmin ? (
+            <TouchableOpacity style={styles.newLoanButton} onPress={handleAdmin}>
+              <Icon2 name="account-cog" size={40} color="#404040" />
+            </TouchableOpacity>
+          ): (
+            <TouchableOpacity style={styles.newLoanButton} onPress={handleUser}>
+              <Icon2 name="account" size={40} color="#404040" />
+            </TouchableOpacity>
+          )}
       </View>
     )
 }
@@ -59,8 +78,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',  // You can also use 'space-evenly' for more consistent spacing
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
+    // paddingTop: 10,
+    // paddingBottom: 10,
     backgroundColor: '#ffffff',  // Set background color to white
     borderTopWidth: 1,
     borderTopColor: '#cccccc',

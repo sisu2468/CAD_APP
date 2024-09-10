@@ -16,6 +16,7 @@ import DesignScreen from 'screens/design-screen';
 import PaymentScreen from 'screens/payment-screen';
 import UserScreen from 'screens/user-screen';
 import FeedbackScreen from 'screens/feedback-screen';
+import AdminScreen from 'screens/admin-screen';
 import UserInfo from 'components/screens/user-screen/user-info'
 import UserPayment from 'components/screens/user-screen/user-payment';
 import UserPassword from 'components/screens/user-screen/user-pwd';
@@ -90,6 +91,11 @@ const App = () => {
           <Stack.Screen
             name="User-Info"
             component={UserInfo}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Admin"
+            component={AdminScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
