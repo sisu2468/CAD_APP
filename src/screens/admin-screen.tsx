@@ -26,13 +26,13 @@ const UserScreen = ({ navigation }: any) => {
   const { t, i18n } = useTranslation();
 
   const handleEditProfile = () => {
-    navigation.navigate('Admin-Users')
+    navigation.navigate('AdminUsers')
   };
   const handleEditPayment = () => {
-    navigation.navigate('Admin-Pay')
+    navigation.navigate('AdminPayment')
   };
   const handleEditFeedback = () => {
-    navigation.navigate('Admin-Feedback')
+    navigation.navigate('AdminFeedback')
   };
   const handleSignOut = () => {
     navigation.navigate('Signin', {isSignout: true});
@@ -46,7 +46,7 @@ const UserScreen = ({ navigation }: any) => {
           <Text style={styles.buttonText}>{t('admin.userinfo')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditFeedback}>
-          <Icon2 name="square-edit-outline" size={20} color="#404040" />
+          <Icon2 name="square-edit-outline" size={20} color="#9D9D9D" />
           <Text style={styles.buttonText}>{t('admin.feedback')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEditPayment}>

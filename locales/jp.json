@@ -3,6 +3,7 @@
     "logout": "ログアウト",
     "signup": "サインアップ",
     "update": "アップデート",
+    "search": "検索...",
     "signinfo": {
       "remember": "ログイン状態を保存する",
       "pwd": "パスワード",
@@ -80,7 +81,21 @@
       "admin": "管理者",
       "userinfo": "ユーザー管理",
       "feedback": "フィードバック管理",
-      "payment": "支払い管理"
+      "payment": "支払い管理",
+      "users": {
+        "no": "番号",
+        "name": "氏名",
+        "mail": "メールアドレス",
+        "company": "会社名",
+        "adduser": "新規ユーザーを追加",
+        "birthdate": "生年月日",
+        "password": "パスワード",
+        "confirmpwd": "パスワードを認証する",
+        "add": "追加",
+        "update": "更新",
+        "delete": "削除",
+        "cancel": "キャンセル"
+      }
     }
   }
   

@@ -3,9 +3,9 @@ import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
-const FullNameInputField = () => {
+const FullNameInputField = ({username, setUsername}: any) => {
   const { t, i18n } = useTranslation();
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
 
   return (
     <View style={styles.container}>

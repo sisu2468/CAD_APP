@@ -3,7 +3,7 @@ import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';  // Use MaterialIcons
 import { useTranslation } from 'react-i18next';
 
-const CompanyNameInputField = () => {
+const CompanyNameInputField = ({companyname, setCompanyName}: any) => {
   const { t, i18n } = useTranslation();
 
   return (
@@ -11,6 +11,7 @@ const CompanyNameInputField = () => {
       <Icon name="business" size={22} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
+        value={companyname}
         placeholder={t('person.company')}
         autoCapitalize="words"
       />

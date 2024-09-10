@@ -6,10 +6,9 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useTranslation } from 'react-i18next';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const BirthDateInputField = () => {
+const BirthDateInputField = ({birthDate, setBirthDate}: any) => {
   const { t, i18n } = useTranslation();
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [birthDate, setBirthDate] = useState('');
   const [showPicker, setShowPicker] = useState(false);
 
   const onChange = (event, date) => {

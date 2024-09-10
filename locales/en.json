@@ -3,6 +3,7 @@
     "signup": "Sign Up",
     "logout": "Sign Out",
     "update": "Upadate",
+    "search": "Search...",
     "signinfo": {
       "remember": "Remember Me",
       "pwd": "Password",
@@ -80,7 +81,21 @@
       "admin": "ADMIN",
       "userinfo": "Users Management",
       "feedback": "Feedback Management",
-      "payment": "Payment Management"
+      "payment": "Payment Management",
+      "users": {
+        "no": "No",
+        "name": "Name",
+        "mail": "Email",
+        "company": "Company Name",
+        "adduser": "Add New User",
+        "birthdate": "Birthdate",
+        "password": "Password",
+        "confirmpwd": "Confirm Password",
+        "add": "ADD",
+        "update": "Upadate",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      }
     }
   }
   

@@ -4,13 +4,12 @@ import Icon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 import CountryPicker from 'react-native-country-picker-modal';
 
-const FullNameInputField = () => {
+const FullNameInputField = ({phoneNumber, setPhoneNumber}: any) => {
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState('');
   const [countryCode, setCountryCode] = useState('JP');
   const [callingCode, setCallingCode] = useState('+81');
   const [showCountryPicker, setShowCountryPicker] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleCountrySelect = (country) => {
     setCountryCode(country.cca2);

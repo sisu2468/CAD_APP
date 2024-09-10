@@ -21,6 +21,9 @@ import UserInfo from 'components/screens/user-screen/user-info'
 import UserPayment from 'components/screens/user-screen/user-payment';
 import UserPassword from 'components/screens/user-screen/user-pwd';
 import UserDesign from 'components/screens/user-screen/user-design';
+import AdminUsers from 'components/screens/admin-screen/admin-users';
+import AdminFeedback from 'components/screens/admin-screen/admin-feedback';
+import AdminPayment from 'components/screens/admin-screen/admin-payment';
 
 // Import your translations
 import en from './locales/en.json';
@@ -96,6 +99,21 @@ const App = () => {
           <Stack.Screen
             name="Admin"
             component={AdminScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AdminUsers"
+            component={AdminUsers}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AdminFeedback"
+            component={AdminFeedback}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AdminPayment"
+            component={AdminPayment}
             options={{headerShown: false}}
           />
           <Stack.Screen
