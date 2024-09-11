@@ -25,7 +25,10 @@ const Header = ({ title, navigation, route }: any) => {
   };
 
   const previousButton = require('../../../assets/images/ep_back.png');
-  
+
+  const handleSignOut = () => {
+    navigation.navigate('Signin', {isSignout: true});
+  };  
   return (
     <View style={styles.header}>
       <TouchableOpacity style={styles.previousstyle}  onPress={() => navigation.goBack()}>
@@ -53,6 +56,9 @@ const Header = ({ title, navigation, route }: any) => {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => changeLanguage('jp')}>
               <Text style={styles.dropdownText}>日本語</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleSignOut}>
+              <Text style={styles.dropdownText}>{t('logout')}</Text>
           </TouchableOpacity>
           </View>
       </Modal>

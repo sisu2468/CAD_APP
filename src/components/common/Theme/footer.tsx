@@ -47,25 +47,25 @@ const Footer = ({navigation, route}: any) => {
       <View style={styles.footer}>
           <TouchableOpacity style={styles.newLoanButton} onPress={handleDesign}>
             {/* <Image source={design} style={styles.icon} /> */}
-            <Icon2 name="compass" size={40} color="#404040" />
+            <Icon2 name="compass" size={35} color="#404040" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.newLoanButton} onPress={handlePaid}>
             {/* <Image source={paid} style={styles.icon} /> */}
-            <Icon name="paid" size={40} color="#404040" />
+            <Icon name="paid" size={35} color="#404040" />
           </TouchableOpacity>
           <TouchableOpacity  onPress={handleHome}>
             <Image source={Logo} style={styles.logo}/>
           </TouchableOpacity>
           <TouchableOpacity style={styles.newLoanButton} onPress={handleFeedback}>
-            <Icon2 name="square-edit-outline" size={40} color="#404040" />
+            <Icon2 name="square-edit-outline" size={35} color="#404040" />
           </TouchableOpacity>
           {isAdmin ? (
             <TouchableOpacity style={styles.newLoanButton} onPress={handleAdmin}>
-              <Icon2 name="account-cog" size={40} color="#404040" />
+              <Icon2 name="account-cog" size={35} color="#404040" />
             </TouchableOpacity>
           ): (
             <TouchableOpacity style={styles.newLoanButton} onPress={handleUser}>
-              <Icon2 name="account" size={40} color="#404040" />
+              <Icon2 name="account" size={35} color="#404040" />
             </TouchableOpacity>
           )}
       </View>
