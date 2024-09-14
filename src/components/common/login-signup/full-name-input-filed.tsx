@@ -3,18 +3,19 @@ import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
-const FullNameInputField = ({username, setUsername}: any) => {
+const FullNameInputField = ({username, onChange}: any) => {
   const { t, i18n } = useTranslation();
-  // const [username, setUsername] = useState('');
 
   return (
     <View style={styles.container}>
       <Icon name="user" size={22} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        placeholder={t('person.fullname')}
         value={username}
-        onChangeText={setUsername}
+        placeholder={t('person.fullname')}
+        onChangeText={value => {
+          if (onChange) onChange(value);
+        }}
         autoCapitalize="words"
       />
     </View>

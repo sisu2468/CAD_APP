@@ -17,8 +17,10 @@ type Props = {
   navigation?: any;
   handleSSOWithGoogle?: () => void;
   handleInputChange: (field: string, value: string) => void;
-  email: string;
+  username: string;
   companyname: string;
+  birthdate: string;
+  email: string;
   password: string;
   confirmPassword: string;
 };
@@ -27,8 +29,10 @@ const SignupOptionAndInfoSection = ({
   navigation,
   handleSSOWithGoogle,
   handleInputChange,
-  email,
+  username,
   companyname,
+  birthdate,
+  email,
   password,
   confirmPassword,
 }: Props) => {
@@ -39,6 +43,13 @@ const SignupOptionAndInfoSection = ({
   const [isNotPasswordMatching, setIsNotPasswordMatching] =
     useState<boolean>(false);
   const { t, i18n } = useTranslation();
+
+  const handleNameChange = (text: string) => {
+    handleInputChange('username', text);
+  }
+  const handleCompanyNameChange = (text: string) => {
+    handleInputChange('companyname', text);
+  }
 
   const handleEmailChange = (text: string) => {
     handleInputChange('email', text);
@@ -86,8 +97,14 @@ const SignupOptionAndInfoSection = ({
         onClick={handleSSOWithGoogle}
       />
       <Text style={styles.separator}>{t('signinfo.or')}</Text>
-      <FullNameInputField />
-      <CompanyInputField />
+      <FullNameInputField
+        username={username}
+        onChange={handleNameChange}
+      />
+      <CompanyInputField 
+        companyname={companyname}
+        onChange={handleCompanyNameChange}
+      />
       <BirthdateInputField />
       <MailInputField
         email={email}

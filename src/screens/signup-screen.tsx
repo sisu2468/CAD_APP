@@ -12,10 +12,12 @@ const Logo = require('assets/images/Delite_logo.png');
 const SignUpScreen = ({navigation}: any) => {
   const { t, i18n } = useTranslation();
 
+  const [username, setUserName] = useState('');
+  const [companyname, setCompanyName] = useState('');
+  const [birthdate, setBirthDate] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [companyname, setCompanyName] = useState('');
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
@@ -53,6 +55,15 @@ const SignUpScreen = ({navigation}: any) => {
 
   const handleInputChange = (field: string, value: string) => {
     switch (field) {
+      case 'usermane':
+        setUserName(value);
+        break;
+      case 'companyname':
+        setCompanyName(value);
+        break;
+      case 'birthdate':
+        setBirthDate(value);
+        break;
       case 'email':
         setEmail(value);
         break;
@@ -62,10 +73,8 @@ const SignUpScreen = ({navigation}: any) => {
       case 'confirmPassword':
         setConfirmPassword(value);
         break;
-      case 'companyname':
-        setCompanyName(value);
-        break;
     }
+    console.log("......", value);
   };
 
   return (
@@ -81,11 +90,13 @@ const SignUpScreen = ({navigation}: any) => {
             <SignupOptionAndInfoSection
               navigation={navigation}
               handleSSOWithGoogle={handleSSOWithGoogle}
-              handleInputChange={handleInputChange}
+              username={username}
+              companyname={companyname}
+              birthdate={birthdate}
               email={email}
               password={password}
-              companyname={companyname}
               confirmPassword={confirmPassword}
+              handleInputChange={handleInputChange}
             />
 
             <View style={styles.loginbuttonSctionContainer}>

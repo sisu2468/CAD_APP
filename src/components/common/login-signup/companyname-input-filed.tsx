@@ -1,9 +1,9 @@
+import React, { useState, useEffect } from 'react';
 import { TextInput, StyleSheet, View } from "react-native";
-// import Icon from 'react-native-vector-icons/FontAwesome';  // Use FontAwesome or other icon set
 import Icon from 'react-native-vector-icons/MaterialIcons';  // Use MaterialIcons
 import { useTranslation } from 'react-i18next';
 
-const CompanyNameInputField = ({companyname, setCompanyName}: any) => {
+const CompanyNameInputField = ({companyname, onChange}: any) => {
   const { t, i18n } = useTranslation();
 
   return (
@@ -13,6 +13,9 @@ const CompanyNameInputField = ({companyname, setCompanyName}: any) => {
         style={styles.input}
         value={companyname}
         placeholder={t('person.company')}
+        onChangeText={value => {
+          if (onChange) onChange(value);
+        }}
         autoCapitalize="words"
       />
     </View>

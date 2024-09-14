@@ -37,7 +37,6 @@ const SignInScreen = ({navigation, route}: any) => {
         setPassword(value);
         break;
     }
-    console.log("......", value);
   };
 
   const HandleSignIn = async () => {
