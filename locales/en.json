@@ -4,6 +4,17 @@
     "logout": "Sign Out",
     "update": "Upadate",
     "search": "Search...",
+    "error": "Error",
+    "neterror": "Network Error:",
+    "loginscreen": {
+      "loginsuccess": "Login Successful",
+      "loginfailed": "Login Failed",
+      "user_not_exist": "Use Does not Exist\n\nPlease Register",
+      "invalidcredential": "Invalid Credentials",
+      "user_password_incorrect": "User Password Incorrect",
+      "errmsg": "Something went wrong. Please check your network."
+    },
+    "welcome": "Welcome",
     "signinfo": {
       "remember": "Remember Me",
       "pwd": "Password",

@@ -37,50 +37,39 @@ const SignInScreen = ({navigation, route}: any) => {
         setPassword(value);
         break;
     }
+    console.log("......", value);
   };
 
-  const HandleSignIn = () => {
-    // if (email !== 'test@gmail.com' || password !== 'test123') {
-
-    //   Alert.alert(
-        //   'Invalid Credentials.',
-        //   `current status \n\n Email: ${email} \n Password: ${password} \n isRemember: ${isRememberMe}`,
-        // );
-    //   return;
-    // } else {
-      // try {
-      //   console.log("///////");
-        
-      //   const response = await fetch('http://localhost:8000/api/login', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify({
-      //       email: email,
-      //       pwd: password,
-      //     }),
-      //   });
-      
-      //   const data = await response.json();
-        
-      //   if (response.ok) {
-      //     // Successful login
-      //     Alert.alert('Login successful', `Welcome ${data.name}`);
-      //     navigation.navigate('Home');
-      //   } else {
-      //     // Handle login failure
-      //     Alert.alert('Login Failed', data.message || 'Invalid Credentials');
-      //   }
-      // } catch (error) {
-      //   Alert.alert('Errot', 'Something went wrong.');
-      //   console.error(error);
-      // }
-     
-      navigation.navigate('Home');
-      
-    // }
+  const HandleSignIn = async () => {
+    try {
+      const response = await fetch('http://62.3.6.169:8000/api/login', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          pwd: password,
+        }),
+      });
+  
+      const data = await response.json();
+      console.log("data", data);
+  
+      if (response.ok) {
+        // Successful login
+        Alert.alert(`${t('loginscreen.loginsuccess')}`, `${t('welcome')} ${data.user.name}`);
+        navigation.navigate('Home');
+      } else {
+        // Handle login failure
+        Alert.alert(`${t('loginscreen.loginfailed')}`, data.message ? t(`loginscreen.${data.message}`) : t('loginscreen.invalidcredential'));
+      }
+    } catch (error) {
+      Alert.alert(t('error'), t('loginscreen.errmsg'));
+      console.error(t('neterror'), error);
+    }
   };
+  
 
   const navigateToSignup = () => {
     navigation.navigate('Signup');

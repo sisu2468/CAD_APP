@@ -4,6 +4,17 @@
     "signup": "サインアップ",
     "update": "アップデート",
     "search": "検索...",
+    "error": "エラー",
+    "neterror": "ネットワークエラー:",
+    "loginscreen": {
+      "loginsuccess": "ログイン成功",
+      "loginfailed": "ログイン失敗",
+      "user_not_exist": "入力したメールアドレスは存在しません。",
+      "invalidcredential": "無効な資格情報",
+      "user_password_incorrect": "入力されたパスワードが正しくありません。再度お試しください。",
+      "errmsg": "ネットワークの接続状況を確認し、再度お試しください。"
+    },
+    "welcome": "Welcome",
     "signinfo": {
       "remember": "ログイン状態を保存する",
       "pwd": "パスワード",

@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: 'medium',
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
-    fontSize: 14,
+    fontSize: 17,
   },
   icon: {
     transform: [{scaleX: -1}, {rotate: '45deg'}],

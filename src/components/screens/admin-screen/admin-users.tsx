@@ -197,7 +197,7 @@ const AdminUsers = ({navigation, handleInputChange, email, route, password, conf
             />
             
             <CompanyInputField companyname={'AAA'} />
-            <BirthdateInputField birthDate={'2004-09-05'} />
+            <BirthdateInputField />
             <PhoneNumberInputField phoneNumber={'111111'} />
             <PasswordInputField
                 password={password}
