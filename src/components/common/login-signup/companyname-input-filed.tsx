@@ -3,7 +3,12 @@ import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';  // Use MaterialIcons
 import { useTranslation } from 'react-i18next';
 
-const CompanyNameInputField = ({companyname, onChange}: any) => {
+type Props = {
+  companyname?: string;
+  onChange?: (value: string) => void;
+};
+
+const CompanyNameInputField = ({companyname, onChange}: Props) => {
   const { t, i18n } = useTranslation();
 
   return (

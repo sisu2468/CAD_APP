@@ -57,7 +57,7 @@ const SignInScreen = ({navigation, route}: any) => {
   
       if (response.ok) {
         // Successful login
-        Alert.alert(`${t('loginscreen.loginsuccess')}`, `${t('welcome')} ${data.user.name}`);
+        Alert.alert(`${t('loginscreen.loginsuccess')}`, `${t('welcome')}`);
         navigation.navigate('Home');
       } else {
         // Handle login failure

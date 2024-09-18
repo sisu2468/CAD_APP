@@ -6,17 +6,25 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useTranslation } from 'react-i18next';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const BirthDateInputField = ({navigate}: any) => {
-  const { t, i18n } = useTranslation();
-  const [selectedDate, setSelectedDate] = useState(new Date());
+type Props = {
+  birthdate?: Date;
+  onChange?: (value: Date) => void;
+};
+
+const BirthDateInputField = ({ birthdate, onChange }: Props) => {
+  const { t } = useTranslation();
+  const [selectedDate, setSelectedDate] = useState<Date>(birthdate || new Date());
   const [showPicker, setShowPicker] = useState(false);
-  const [birthDate, setBirthDate] = useState('');
-  const onhadleBirthday = (event, date) => {
-    setShowPicker(Platform.OS === 'ios');
+
+  const handleBirthdayChange = (event, date?: Date) => {
+    if (Platform.OS === 'android') {
+      setShowPicker(false); // Close the picker on Android after selecting a date
+    }
     if (date) {
-      console.log(date.toISOString().split('T')[0]);
       setSelectedDate(date);
-      setBirthDate(date.toISOString().split('T')[0]); // Format date as YYYY-MM-DD
+      if (onChange) {
+        onChange(date); // Call parent's onChange function with the new date
+      }
     }
   };
 
@@ -26,20 +34,20 @@ const BirthDateInputField = ({navigate}: any) => {
 
   return (
     <View style={styles.container}>
-      <Icon name="calendar" size={22} color={'#9D9D9D'} />
+      <Icon name="calendar" size={22} color="#9D9D9D" />
       <TextInput
         style={styles.input}
         placeholder={t('person.birthdate')}
         autoCapitalize="none"
-        value={birthDate}
+        value={selectedDate.toISOString().split('T')[0]} // Format date as YYYY-MM-DD
         onFocus={showDatePicker} // Show date picker when input is focused
       />
       {showPicker && (
         <DateTimePicker
           value={selectedDate}
           mode="date"
-          display="default"
-          onChange={onhadleBirthday}
+          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+          onChange={handleBirthdayChange}
         />
       )}
     </View>

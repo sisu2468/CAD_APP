@@ -14,7 +14,7 @@ const SignUpScreen = ({navigation}: any) => {
 
   const [username, setUserName] = useState('');
   const [companyname, setCompanyName] = useState('');
-  const [birthdate, setBirthDate] = useState('');
+  const [birthdate, setBirthDate] = useState(new Date());
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -28,8 +28,39 @@ const SignUpScreen = ({navigation}: any) => {
     Alert.alert('Please wait. Implementing the feature');
   };
 
-  const handleSignUpWithEmail = () => {
-    if (isValid) navigation.navigate('Home');
+  const handleSignUpWithEmail = async() => {
+    if (isValid){
+      try {
+        const response = await fetch('http://62.3.6.169:8000/api/register', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: username,
+            companyname: companyname,
+            birthdate: birthdate,
+            email: email,
+            pwd: password
+          }),
+        });
+    
+        const data = await response.json();
+        console.log("data", data);
+    
+        if (response.ok) {
+          // Successful register
+          Alert.alert(`${t('registerscreen.registersuccess')}`, `${t('welcome')}`);
+          navigation.navigate('Signin');
+        } else {
+          // Handle login failure
+          Alert.alert(`${t('registerscreen.registerfailed')}`, data.message ? t(`registerscreen.${data.message}`) : t('loginscreen.invalidcredential'));
+        }
+      } catch (error) {
+        Alert.alert(t('error'), t('loginscreen.errmsg'));
+        console.error(t('neterror'), error);
+      }
+    }
   };
 
   const validateForm = (
@@ -55,14 +86,11 @@ const SignUpScreen = ({navigation}: any) => {
 
   const handleInputChange = (field: string, value: string) => {
     switch (field) {
-      case 'usermane':
+      case 'username':
         setUserName(value);
         break;
       case 'companyname':
         setCompanyName(value);
-        break;
-      case 'birthdate':
-        setBirthDate(value);
         break;
       case 'email':
         setEmail(value);
@@ -74,8 +102,11 @@ const SignUpScreen = ({navigation}: any) => {
         setConfirmPassword(value);
         break;
     }
-    console.log("......", value);
+    console.log("......", username, companyname, birthdate, email, password);
   };
+  const handleDateChange = (value: Date) => {
+    setBirthDate(value);
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -97,6 +128,7 @@ const SignUpScreen = ({navigation}: any) => {
               password={password}
               confirmPassword={confirmPassword}
               handleInputChange={handleInputChange}
+              handleDateChange={handleDateChange}
             />
 
             <View style={styles.loginbuttonSctionContainer}>

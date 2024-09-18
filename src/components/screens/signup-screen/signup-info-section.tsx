@@ -17,9 +17,10 @@ type Props = {
   navigation?: any;
   handleSSOWithGoogle?: () => void;
   handleInputChange: (field: string, value: string) => void;
+  handleDateChange: (value: Date) => void;
   username: string;
   companyname: string;
-  birthdate: string;
+  birthdate: Date;
   email: string;
   password: string;
   confirmPassword: string;
@@ -29,6 +30,7 @@ const SignupOptionAndInfoSection = ({
   navigation,
   handleSSOWithGoogle,
   handleInputChange,
+  handleDateChange,
   username,
   companyname,
   birthdate,
@@ -49,6 +51,9 @@ const SignupOptionAndInfoSection = ({
   }
   const handleCompanyNameChange = (text: string) => {
     handleInputChange('companyname', text);
+  }
+  const handleBirthdateChange = (date: Date) => {
+    handleDateChange(date);
   }
 
   const handleEmailChange = (text: string) => {
@@ -105,7 +110,10 @@ const SignupOptionAndInfoSection = ({
         companyname={companyname}
         onChange={handleCompanyNameChange}
       />
-      <BirthdateInputField />
+      <BirthdateInputField 
+        birthdate = {birthdate}
+        onChange={handleBirthdateChange}
+      />
       <MailInputField
         email={email}
         onChange={handleEmailChange}

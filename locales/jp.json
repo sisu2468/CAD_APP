@@ -14,6 +14,11 @@
       "user_password_incorrect": "入力されたパスワードが正しくありません。再度お試しください。",
       "errmsg": "ネットワークの接続状況を確認し、再度お試しください。"
     },
+    "registerscreen": {
+      "registersuccess": "登録成功",
+      "user_exist": "ユーザーはすでに存在しています。",
+      "registerfailed": "登録失敗"
+    },
     "welcome": "Welcome",
     "signinfo": {
       "remember": "ログイン状態を保存する",

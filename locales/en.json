@@ -14,6 +14,11 @@
       "user_password_incorrect": "User Password Incorrect",
       "errmsg": "Something went wrong. Please check your network."
     },
+    "registerscreen": {
+      "registersuccess": "Success Register",
+      "user_exist": "User Already Exist",
+      "registerfailed": "Register Faild"
+    },
     "welcome": "Welcome",
     "signinfo": {
       "remember": "Remember Me",
