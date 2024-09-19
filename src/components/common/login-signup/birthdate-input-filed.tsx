@@ -1,11 +1,11 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';  // Use FontAwesome or other icon set
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useTranslation } from 'react-i18next';
 import DateTimePicker from '@react-native-community/datetimepicker';
-
+import { UserContext } from '../userContext';
 type Props = {
   birthdate?: Date;
   onChange?: (value: Date) => void;
@@ -13,13 +13,14 @@ type Props = {
 
 const BirthDateInputField = ({ birthdate, onChange }: Props) => {
   const { t } = useTranslation();
-  const [selectedDate, setSelectedDate] = useState<Date>(birthdate || new Date());
+  const { userData } = useContext(UserContext);
+
+  // Initialize selected date with the provided birthdate or userData's birthdate or today's date
+  const [selectedDate, setSelectedDate] = useState<Date>(birthdate || new Date(userData?.birthdate || new Date()));
   const [showPicker, setShowPicker] = useState(false);
 
   const handleBirthdayChange = (event, date?: Date) => {
-    if (Platform.OS === 'android') {
-      setShowPicker(false); // Close the picker on Android after selecting a date
-    }
+    setShowPicker(false); // Hide picker after selection
     if (date) {
       setSelectedDate(date);
       if (onChange) {

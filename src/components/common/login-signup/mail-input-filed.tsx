@@ -1,7 +1,9 @@
+import React, { useContext, useState } from 'react';
 import {TextInput, StyleSheet, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
+import { UserContext } from 'components/common/userContext';
 
 type Props = {
   email?: string;
@@ -11,6 +13,13 @@ type Props = {
 
 const MailInputField = ({email, onChange, isInvalid = false}: Props) => {
   const { t, i18n } = useTranslation();
+  const { userData } = useContext(UserContext);
+
+  const [inputValue, setInputValue] = useState(email || userData?.email || '');
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+    if (onChange) onChange(value); // Trigger onChange callback if provided
+  };
   return (
     <View
       style={[
@@ -19,10 +28,8 @@ const MailInputField = ({email, onChange, isInvalid = false}: Props) => {
       ]}>
       <Icon name="mail" size={22} color={'#9D9D9D'} />
       <TextInput
-        value={email}
-        onChangeText={value => {
-          if (onChange) onChange(value);
-        }}
+        value={inputValue}
+        onChangeText={handleInputChange} // Update value on text change
         style={[styles.input, {color: isInvalid ? '#FF0000' : '#000'}]}
         placeholder={t('person.email')}
         keyboardType="email-address"

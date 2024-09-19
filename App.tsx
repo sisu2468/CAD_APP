@@ -25,6 +25,8 @@ import AdminUsers from 'components/screens/admin-screen/admin-users';
 import AdminFeedback from 'components/screens/admin-screen/admin-feedback';
 import AdminPayment from 'components/screens/admin-screen/admin-payment';
 
+import { UserProvider } from 'components/common/userContext';
+
 // Import your translations
 import en from './locales/en.json';
 import jp from './locales/jp.json';
@@ -53,87 +55,89 @@ i18next
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <I18nextProvider i18n={i18next}>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Signin"
-            component={SignInScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Signup"
-            component={SignUpScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Design"
-            component={DesignScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Payment"
-            component={PaymentScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="User"
-            component={UserScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Feedback"
-            component={FeedbackScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="User-Info"
-            component={UserInfo}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Admin"
-            component={AdminScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AdminUsers"
-            component={AdminUsers}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AdminFeedback"
-            component={AdminFeedback}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AdminPayment"
-            component={AdminPayment}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="User-Pwd"
-            component={UserPassword}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="User-Pay"
-            component={UserPayment}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="User-Design"
-            component={UserDesign}
-            options={{headerShown: false}}
-          />
-        </Stack.Navigator>
-      </I18nextProvider>
-    </NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <I18nextProvider i18n={i18next}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Signin"
+              component={SignInScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Signup"
+              component={SignUpScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Design"
+              component={DesignScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Payment"
+              component={PaymentScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="User"
+              component={UserScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Feedback"
+              component={FeedbackScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="User-Info"
+              component={UserInfo}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Admin"
+              component={AdminScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AdminUsers"
+              component={AdminUsers}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AdminFeedback"
+              component={AdminFeedback}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AdminPayment"
+              component={AdminPayment}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="User-Pwd"
+              component={UserPassword}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="User-Pay"
+              component={UserPayment}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="User-Design"
+              component={UserDesign}
+              options={{headerShown: false}}
+            />
+          </Stack.Navigator>
+        </I18nextProvider>
+      </NavigationContainer>
+    </UserProvider>
   );
 };
 

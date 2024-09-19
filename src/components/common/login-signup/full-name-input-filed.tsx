@@ -1,26 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
+import { UserContext } from 'components/common/userContext';
 
 type Props = {
   username?: string;
   onChange?: (value: string) => void;
 };
 
-const FullNameInputField = ({username, onChange}: Props) => {
-  const { t, i18n } = useTranslation();
+const FullNameInputField = ({ username, onChange }: Props) => {
+  const { t } = useTranslation();
+  const { userData } = useContext(UserContext);
+
+  // Initialize state with userData.name or the provided username prop
+  const [inputValue, setInputValue] = useState(username || userData?.name || '');
+
+  // Handle input change
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+    if (onChange) onChange(value); // Trigger onChange callback if provided
+  };
 
   return (
     <View style={styles.container}>
       <Icon name="user" size={22} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        value={username}
+        value={inputValue}
         placeholder={t('person.fullname')}
-        onChangeText={value => {
-          if (onChange) onChange(value);
-        }}
+        onChangeText={handleInputChange} // Update value on text change
         autoCapitalize="none"
       />
     </View>

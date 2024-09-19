@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';import {
   View,
   StyleSheet,
@@ -28,6 +28,7 @@ import PasswordConfrimInputField from 'components/common/login-signup/password-c
 import PhoneNumberInputField from 'components/common/login-signup/phone-number-input-field';
 import UserPaymentField from 'components/common/login-signup/user-payment-field';
 import UserCreatedDateField from 'components/common/login-signup/user-created-date-field';
+import { UserContext } from 'components/common/userContext';
 
 const defaultprofileImage = require('../../../assets/images/avatar.png')
 const logoImage = require('../../../assets/images/Delite_logo.png')
@@ -35,25 +36,26 @@ const previousButton = require('../../../assets/images/ep_back.png')
 
 type Props = {
   navigation?: any;
-  handleSSOWithGoogle?: () => void;
   handleInputChange: (field: string, value: string) => void;
   email: string;
   companyname: string;
+  birthdate: Date;
   password: string;
   confirmPassword: string;
 };
 
 const UserInfo = ({
   navigation,
-  handleSSOWithGoogle,
   handleInputChange,
   email,
   companyname,
+  birthdate,
   password,
   confirmPassword,
 }: any) => {
   const { t, i18n } = useTranslation();
-
+  const { userData } = useContext(UserContext);
+  
   const [isInvalidEmail, setIsInvalidEmail] = useState<boolean>(false);
   const [isInvalidcompanyname, setIsInvalidCCompanyName] = useState<boolean>(false);
   const [isUserDuplicated, setIsUserDuplicated] = useState<boolean>(false);
@@ -74,6 +76,8 @@ const UserInfo = ({
   const [countryCode, setCountryCode] = useState('JP');
   const [callingCode, setCallingCode] = useState('+81');
   const [showCountryPicker, setShowCountryPicker] = useState(false);
+
+  
 
   const handleEmailChange = (text: string) => {
     handleInputChange('email', text);
@@ -129,15 +133,13 @@ const UserInfo = ({
         <View style={styles.form}>
           <FullNameInputField />
           <MailInputField
-            email={email}
-            onChange={handleEmailChange}
             isInvalid={isInvalidEmail}
           />
           
           <CompanyInputField />
           <BirthdateInputField />
           <PhoneNumberInputField />
-          <UserPaymentField />
+          <UserPaymentField fieldstatus = {false} />
           <UserCreatedDateField />
           <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
             <Text style={styles.updateButtonText}>{t('update')}</Text>

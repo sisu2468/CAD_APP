@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TextInput, StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';  // Use MaterialIcons
 import { useTranslation } from 'react-i18next';
+import { UserContext } from 'components/common/userContext';
 
 type Props = {
   companyname?: string;
@@ -10,17 +11,20 @@ type Props = {
 
 const CompanyNameInputField = ({companyname, onChange}: Props) => {
   const { t, i18n } = useTranslation();
-
+  const { userData } = useContext(UserContext);
+  const [inputValue, setInputValue] = useState(companyname || userData?.companyname || '');
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+    if (onChange) onChange(value); // Trigger onChange callback if provided
+  };
   return (
     <View style={styles.container}>
       <Icon name="business" size={22} color={'#9D9D9D'} />
       <TextInput
         style={styles.input}
-        value={companyname}
+        value={inputValue}
         placeholder={t('person.company')}
-        onChangeText={value => {
-          if (onChange) onChange(value);
-        }}
+        onChangeText={handleInputChange}
         autoCapitalize="words"
       />
     </View>

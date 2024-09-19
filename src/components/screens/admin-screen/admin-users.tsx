@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Image,
   Button,
+  Alert,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -22,11 +23,14 @@ import FullNameInputField from 'components/common/login-signup/full-name-input-f
 import PasswordConfrimInputField from 'components/common/login-signup/password-confirm-input-field';
 import PhoneNumberInputField from 'components/common/login-signup/phone-number-input-field';
 
-import Footer from '../../../components/common/Theme/footer';
-import Header from '../../../components/common/Theme/header';
+import Footer from 'components/common/Theme/footer';
+import Header from 'components/common/Theme/header';
 import { useTranslation } from 'react-i18next';
+import SignupOptionAndInfoSection from 'components/screens/signup-screen/signup-info-section';
 
-const AdminUsers = ({navigation, handleInputChange, email, route, password, confirmPassword}: any) => {
+import { UserContext } from 'components/common/userContext';
+
+const AdminUsers = ({navigation}: any) => {
   const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const [usermodalVisible, setUserModalVisible] = useState(false);
@@ -38,6 +42,8 @@ const AdminUsers = ({navigation, handleInputChange, email, route, password, conf
   const [isPasswordWeak, setIsPasswordWeak] = useState<boolean>(false);
   const [isNotPasswordMatching, setIsNotPasswordMatching] =
     useState<boolean>(false);
+  const [usersdata, setUsersData] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
   // Sample data for the table
   const data = [
     { no: 1, name: 'User1', mail: 'user@gmail.com', companyname: "AAA" },
@@ -45,6 +51,117 @@ const AdminUsers = ({navigation, handleInputChange, email, route, password, conf
     { no: 3, name: 'User3', mail: 'user@gmail.com', companyname: "AAA" },
     // Add more rows as needed
   ];
+
+  const [username, setUserName] = useState('');
+  const [companyname, setCompanyName] = useState('');
+  const [birthdate, setBirthDate] = useState(new Date());
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isValid, setIsValid] = useState(false);
+
+  const { userData } = useContext(UserContext);
+
+  const handleSignUpWithEmail = async() => {
+    if (isValid){
+      try {
+        const response = await fetch('http://62.3.6.169:8000/api/register', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: username,
+            companyname: companyname,
+            birthdate: birthdate,
+            email: email,
+            pwd: password
+          }),
+        });
+    
+        const data = await response.json();
+        console.log("data", data);
+    
+        if (response.ok) {
+          // Successful register
+          Alert.alert(`${t('registerscreen.registersuccess')}`, `${t('welcome')}`);
+          navigation.navigate('Signin');
+        } else {
+          // Handle login failure
+          Alert.alert(`${t('registerscreen.registerfailed')}`, data.message ? t(`registerscreen.${data.message}`) : t('loginscreen.invalidcredential'));
+        }
+      } catch (error) {
+        Alert.alert(t('error'), t('loginscreen.errmsg'));
+        console.error(t('neterror'), error);
+      }
+    }
+  };
+
+  const validateForm = (
+    email: string,
+    companyname: String,
+    password: string,
+    confirmPassword: string,
+  ) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+    if (
+      emailRegex.test(email) &&
+      passwordRegex.test(password) &&
+      password === confirmPassword
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    switch (field) {
+      case 'username':
+        setUserName(value);
+        break;
+      case 'companyname':
+        setCompanyName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      case 'confirmPassword':
+        setConfirmPassword(value);
+        break;
+    }
+    console.log("......", username, companyname, birthdate, email, password);
+  };
+  const handleDateChange = (value: Date) => {
+    setBirthDate(value);
+  }
+
+  const get_All_Users = async() => {
+    try {
+      const response = await fetch('http://62.3.6.169:8000/api/users', {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+      const data = await response.json();
+      console.log("response", data);
+      setUsersData(data);
+      
+    } catch (err) {
+
+    }
+  };
+
+  useEffect(() => {
+    get_All_Users();
+  }, [])
 
   // Function to handle form submission
   const handleAddUser = () => {
@@ -129,18 +246,28 @@ const AdminUsers = ({navigation, handleInputChange, email, route, password, conf
           </View>
 
           {/* Table Rows */}
-          {data.map((item, index) => (
-            <TouchableOpacity
-                onPress={() => setUserModalVisible(true)}
-            >
-                <View key={index} style={styles.tableRow}>
-                <Text style={styles.cell}>{item.no}</Text>
-                <Text style={styles.cell}>{item.name}</Text>
-                <Text style={styles.cell}>{item.mail}</Text>
-                <Text style={styles.cell}>{item.companyname}</Text>
-                </View>
-            </TouchableOpacity>
+          {usersdata.map((user, index) => (
+              <TouchableOpacity
+                  key={index} // Key should be on the outermost element
+                  onPress={() => {
+                      setUserModalVisible(true);
+                      setSelectedUser(user); // Assuming you have setSelectedUser to pass user data to the modal
+                  }}
+              >
+                {user.isAdmin 
+                  ?(<></>) : (
+                    <View style={styles.tableRow}>
+                        <Text style={styles.cell}>{user.avatar}</Text>
+                        <Text style={styles.cell}>{user.name}</Text>
+                        <Text style={styles.cell}>{user.email}</Text>
+                        <Text style={styles.cell}>{user.companyname}</Text>
+                    </View>
+                  )
+                }
+
+              </TouchableOpacity>
           ))}
+
         </View>
       </ScrollView>
       {/* Feedback Submission Modal */}
@@ -153,7 +280,18 @@ const AdminUsers = ({navigation, handleInputChange, email, route, password, conf
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>{t('admin.users.adduser')}</Text>
-            <FullNameInputField />
+            {/* <SignupOptionAndInfoSection
+              navigation={navigation}
+              username={username}
+              companyname={companyname}
+              birthdate={birthdate}
+              email={email}
+              password={password}
+              confirmPassword={confirmPassword}
+              handleInputChange={handleInputChange}
+              handleDateChange={handleDateChange}
+            /> */}
+            {/* <FullNameInputField />
             <MailInputField
                 email={email}
                 onChange={handleEmailChange}
@@ -172,11 +310,18 @@ const AdminUsers = ({navigation, handleInputChange, email, route, password, conf
                 confirmPassword={confirmPassword}
                 onChange={handlePasswordConfirmChange}
                 isInvalid={isNotPasswordMatching}
-            />
-            <View style={styles.button}>
-              <Button title={t('admin.users.add')} onPress={handleAddUser} />
-              <Button title={t('admin.users.cancel')} onPress={() => setModalVisible(false)} />
-            </View>
+            /> */}
+            {/* {user.isAdmin 
+              ?( */}
+                <View style={styles.button}>
+                  <Button title={t('admin.users.add')} onPress={handleAddUser} />
+                  <Button title={t('admin.users.cancel')} onPress={() => setModalVisible(false)} />
+                </View>
+              {/* ) : (
+                <></>
+              )
+            } */}
+            
           </View>
         </View>
       </Modal>

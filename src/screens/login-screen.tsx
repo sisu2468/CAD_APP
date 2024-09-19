@@ -1,7 +1,9 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import { API_URL, API_KEY } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
+
+import { UserContext } from 'components/common/userContext';
 
 import {
   View,
@@ -20,6 +22,8 @@ import PageStyles from 'components/common/login-signup/style.module';
 const Logo = require('assets/images/Delite_logo.png');
 
 const SignInScreen = ({navigation, route}: any) => {
+  const { setUserData } = useContext(UserContext);
+
   const { t, i18n } = useTranslation();
 
   const isSignout = route?.params?.isSignout || false;
@@ -56,6 +60,8 @@ const SignInScreen = ({navigation, route}: any) => {
       console.log("data", data);
   
       if (response.ok) {
+        setUserData(data.user);
+
         // Successful login
         Alert.alert(`${t('loginscreen.loginsuccess')}`, `${t('welcome')}`);
         navigation.navigate('Home');
