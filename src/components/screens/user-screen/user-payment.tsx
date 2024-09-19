@@ -42,7 +42,7 @@ const UserPayment = ({ navigation, route, email }: any) => {
           />
 
           <Text style={styles.label}>{t('payinfo.currentcredit')}</Text>
-          <UserPaymentField />
+          <UserPaymentField fieldstatus = {false} />
           <TouchableOpacity style={styles.updateButton} onPress={handlepayment}>
             <Text style={styles.updateButtonText}>{t('payinfo.buycredit')}</Text>
           </TouchableOpacity>    
